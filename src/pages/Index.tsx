@@ -406,66 +406,92 @@ const Index = () => {
 
       {/* Program Section */}
       <section id="program" className="relative z-10 py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(16px)" }}>
-            {/* Section Header */}
-            <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
-                Программа
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Два дня поэзии и памяти</h2>
-              <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(245,213,176,0.75)" }}>
-                2–3 мая 2026 года, деревня Борки
-              </p>
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+              Программа
             </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Два дня поэзии и памяти</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(245,213,176,0.75)" }}>
+              2–3 мая 2026 года
+            </p>
+          </div>
 
-            {/* Program Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Day 1 */}
+          <div className="rounded-3xl overflow-hidden mb-8" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)" }}>
+            <div className="px-8 py-5 flex items-center gap-4" style={{ background: "rgba(80,40,0,0.5)", borderBottom: "1px solid rgba(200,160,32,0.25)" }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(200,160,32,0.2)", border: "1px solid rgba(200,160,32,0.4)" }}>
+                <Icon name="Calendar" size={18} style={{ color: "#c8a020" }} />
+              </div>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color: "#c8a020" }}>День первый</div>
+                <div className="text-xl font-bold" style={{ color: "#f5e8c0" }}>2 мая — Великие Луки</div>
+              </div>
+            </div>
+            <div className="divide-y" style={{ borderColor: "rgba(160,57,74,0.15)" }}>
               {[
-                {
-                  num: "01.",
-                  day: "2 мая",
-                  title: "Открытие фестиваля",
-                  desc: "Торжественная церемония открытия, приветственные слова организаторов и почётных гостей, возложение цветов к мемориалу.",
-                },
-                {
-                  num: "02.",
-                  day: "2 мая",
-                  title: "Конкурсные чтения",
-                  desc: "Участники представляют свои произведения жюри. Мастер-классы от известных поэтов и писателей, литературные дискуссии.",
-                },
-                {
-                  num: "03.",
-                  day: "3 мая",
-                  title: "Литературные встречи",
-                  desc: "Экскурсии по памятным местам района, встречи с ветеранами, презентация сборника лучших произведений прошлых лет.",
-                },
-                {
-                  num: "04.",
-                  day: "3 мая",
-                  title: "Закрытие и награждение",
-                  desc: "Торжественное закрытие, объявление победителей и лауреатов, вручение дипломов и призов, гала-концерт.",
-                },
-              ].map((phase) => (
-                <div key={phase.num} className="rounded-2xl p-8 flex flex-col" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.18)", backdropFilter: "blur(12px)" }}>
-                  <div className="text-3xl font-bold mb-1" style={{ color: "rgba(200,160,32,0.55)" }}>{phase.num}</div>
-                  <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#c8a020" }}>{phase.day}</div>
-                  <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>{phase.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.72)" }}>{phase.desc}</p>
+                { time: "8:00", text: "Встреча гостей праздника на ж.д. вокзале г. Великие Луки" },
+                { time: "8:30–9:00", text: "Завтрак гостей (гостиница «Юбилейная», пл. Ленина, д. 2)" },
+                { time: "10:00–12:30", text: "Экскурсия по центральной части города. Ведущий — экскурсовод-историк Владимир Орлов. Начало от пл. Ленина" },
+                { time: "13:00–13:30", text: "Обед / чаепитие (Администрация Великолукского района, пр-кт Гагарина, д. 6)" },
+                { time: "13:30", text: "Сбор почётных гостей и зрителей в актовом зале районной администрации" },
+                { time: "14:00–16:00", text: "Круглый стол «Военная поэзия как часть победной истории России» — выступления литературоведов и поэтов из разных регионов, чтение стихов" },
+                { time: "16:00–16:30", text: "Чайная пауза" },
+                { time: "17:00–18:00", text: "Финальные чтения конкурса чтецов «Победное слово над Ловатью» (актовый зал администрации, пр-кт Гагарина, д. 6)" },
+                { time: "18:15", text: "Отъезд гостей в Борки, расселение" },
+                { time: "19:00", text: "Ужин в Борках" },
+                { time: "21:00", text: "Отдых гостей" },
+              ].map((item) => (
+                <div key={item.time} className="flex items-start gap-5 px-8 py-4">
+                  <div className="text-sm font-semibold flex-shrink-0 w-28 pt-0.5" style={{ color: "#c8a020" }}>{item.time}</div>
+                  <div className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>{item.text}</div>
                 </div>
               ))}
             </div>
+          </div>
 
-            {/* Registration Button */}
-            <div className="text-center">
-              <Button
-                size="lg"
-                className="rounded-full px-12 py-4 text-lg font-semibold"
-                style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}
-              >
-                Подать заявку на участие
-              </Button>
+          {/* Day 2 */}
+          <div className="rounded-3xl overflow-hidden mb-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)" }}>
+            <div className="px-8 py-5 flex items-center gap-4" style={{ background: "rgba(80,20,20,0.6)", borderBottom: "1px solid rgba(200,160,32,0.25)" }}>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(200,160,32,0.2)", border: "1px solid rgba(200,160,32,0.4)" }}>
+                <Icon name="Star" size={18} style={{ color: "#c8a020" }} />
+              </div>
+              <div>
+                <div className="text-xs font-bold uppercase tracking-widest mb-0.5" style={{ color: "#c8a020" }}>День второй</div>
+                <div className="text-xl font-bold" style={{ color: "#f5e8c0" }}>3 мая — д. Борки Великолукского района</div>
+              </div>
             </div>
+            <div className="divide-y" style={{ borderColor: "rgba(160,57,74,0.15)" }}>
+              {[
+                { time: "8:30–8:50", text: "Завтрак гостей" },
+                { time: "8:50–10:00", text: "Краткая экскурсия по музею им. Васильева" },
+                { time: "10:30", text: "Лития у памятника Скорбящей. Возложение цветов на Братскую могилу" },
+                { time: "11:00", text: "Начало праздника. Торжественная часть — приветственные слова от администрации района, музыкально-поэтическая программа (выступления участников у главного микрофона: 2 стиха, кратко о себе и значении праздника)" },
+                { time: "11:00–15:30", text: "Работа выставок: рисунки, картины, фотографии, выездные экспозиции музейных комплексов" },
+                { time: "13:00–14:30", text: "Работа полевой кухни" },
+                { time: "14:00", text: "Завершение массовой части праздника" },
+                { time: "14:30–17:00", text: "Торжественный обед для почётных гостей, участников, организаторов и членов литературных делегаций. Свободное общение с чтением стихов" },
+                { time: "17:00–18:00", text: "Отдых" },
+                { time: "18:00", text: "Выезд гостей на ж.д. вокзал Великие Луки" },
+              ].map((item) => (
+                <div key={item.time} className="flex items-start gap-5 px-8 py-4">
+                  <div className="text-sm font-semibold flex-shrink-0 w-28 pt-0.5" style={{ color: "#c8a020" }}>{item.time}</div>
+                  <div className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>{item.text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Registration Button */}
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="rounded-full px-12 py-4 text-lg font-semibold"
+              style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}
+            >
+              Подать заявку на участие
+            </Button>
           </div>
         </div>
       </section>
