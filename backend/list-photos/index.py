@@ -44,13 +44,15 @@ def handler(event: dict, context) -> dict:
     result = s3.list_objects_v2(Bucket='files', Prefix=prefix, Delimiter='/')
     folders = [cp['Prefix'] for cp in result.get('CommonPrefixes', [])]
     photos = []
+    all_keys = []
     for obj in result.get('Contents', []):
         key = obj['Key']
+        all_keys.append(key)
         if key.lower().endswith(image_exts):
             photos.append({'key': key, 'url': f"{cdn_base}/{key}", 'size': obj['Size']})
 
     return {
         'statusCode': 200,
         'headers': {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
-        'body': json.dumps({'prefix': prefix, 'folders': folders, 'photos': photos}),
+        'body': json.dumps({'prefix': prefix, 'folders': folders, 'photos': photos, 'all_keys': all_keys, 'truncated': result.get('IsTruncated', False)}),
     }
