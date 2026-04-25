@@ -8,7 +8,7 @@ interface FAQ {
   answer: string
 }
 
-const LOGO = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/b4a4eef4-569b-40ca-8e8d-eebd60ca8d2d.jpg"
+const LOGO = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/f273d9ef-0f43-4093-bdd7-a82390da06fa.png"
 const HERO_BG = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/e5cb20ac-65ec-46c5-aa03-766700c05fd9.jpg"
 const FESTIVAL_PHOTO_1 = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/4ba01c9d-0626-47c2-a91c-10bcb9cc6878.jpg"
 const FESTIVAL_PHOTO_2 = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/e5cb20ac-65ec-46c5-aa03-766700c05fd9.jpg"
@@ -57,7 +57,7 @@ const Index = () => {
   ]
 
   return (
-    <div className="min-h-screen text-white" style={{ backgroundColor: "#1a0a0a" }}>
+    <div className="min-h-screen text-white" style={{ backgroundColor: "#0f0f0f" }}>
       {/* Hero Section */}
       <div className="relative min-h-screen">
         {/* Background Image with Overlay */}
@@ -71,9 +71,9 @@ const Index = () => {
         {/* Navigation */}
         <nav className="relative z-10 flex items-center justify-between p-6">
           {/* Logo */}
-          <div className="flex items-center gap-3 px-3 py-2 rounded-full" style={{ background: "rgba(80,20,20,0.55)", border: "1px solid rgba(180,80,60,0.35)", backdropFilter: "blur(12px)" }}>
-            <img src={LOGO} alt="Логотип фестиваля" className="w-10 h-10 rounded-full object-cover" />
-            <span className="font-semibold text-sm leading-tight max-w-[160px]" style={{ color: "#f5d5b0" }}>
+          <div className="flex items-center gap-3 px-3 py-2 rounded-full" style={{ background: "rgba(255,255,255,0.92)", border: "1px solid rgba(160,100,40,0.4)", backdropFilter: "blur(12px)" }}>
+            <img src={LOGO} alt="Логотип фестиваля" className="w-12 h-12 object-contain" />
+            <span className="font-semibold text-sm leading-tight max-w-[160px]" style={{ color: "#4a2800" }}>
               «А музы не молчат!»
             </span>
           </div>
@@ -91,7 +91,7 @@ const Index = () => {
                 key={item.label}
                 href={item.href}
                 className="px-4 py-2 rounded-full text-sm hover:opacity-80 transition-opacity"
-                style={{ background: "rgba(80,20,20,0.5)", border: "1px solid rgba(180,80,60,0.3)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}
+                style={{ background: "rgba(30,30,30,0.75)", border: "1px solid rgba(200,160,60,0.4)", backdropFilter: "blur(12px)", color: "#f0dfa0" }}
               >
                 {item.label}
               </a>
@@ -102,7 +102,7 @@ const Index = () => {
           <div className="flex items-center gap-3">
             <Button
               className="rounded-full px-6 font-semibold"
-              style={{ background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }}
+              style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}
             >
               Подать заявку
             </Button>
@@ -112,16 +112,16 @@ const Index = () => {
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 text-center">
           {/* Badge */}
-          <div className="mb-6 px-5 py-2 rounded-full text-sm font-medium" style={{ background: "rgba(80,20,20,0.6)", border: "1px solid rgba(180,80,60,0.4)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}>
-            Всероссийский фестиваль • д. Борки, Псковская область
+          <div className="mb-6 px-5 py-2 rounded-full text-sm font-medium" style={{ background: "rgba(80,40,0,0.65)", border: "1px solid rgba(200,140,40,0.5)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}>
+            🌟 Всероссийский фестиваль фронтовой поэзии
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-4 text-balance" style={{ color: "#f5d5b0" }}>
+          <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-4 text-balance" style={{ color: "#f5e8c0" }}>
             «А музы не молчат!»
           </h1>
-          <p className="text-2xl md:text-3xl font-semibold mb-6" style={{ color: "#c0504a" }}>
-            Фестиваль фронтовой поэзии
+          <p className="text-2xl md:text-3xl font-semibold mb-6" style={{ color: "#d4a030" }}>
+            Всероссийский фестиваль фронтовой поэзии
           </p>
 
           {/* Subheading */}
@@ -130,12 +130,18 @@ const Index = () => {
           </p>
 
           {/* Date Block */}
-          <div className="flex items-center gap-3 mb-10 px-6 py-4 rounded-2xl" style={{ background: "rgba(80,20,20,0.6)", border: "1px solid rgba(180,80,60,0.4)", backdropFilter: "blur(12px)" }}>
-            <Icon name="Calendar" size={24} style={{ color: "#c0504a" }} />
+          <div className="flex items-center gap-3 mb-6 px-6 py-4 rounded-2xl" style={{ background: "rgba(80,40,0,0.6)", border: "1px solid rgba(200,140,40,0.45)", backdropFilter: "blur(12px)" }}>
+            <Icon name="Calendar" size={24} style={{ color: "#d4a030" }} />
             <div className="text-left">
-              <div className="text-2xl font-bold" style={{ color: "#f5d5b0" }}>2–3 мая 2026</div>
-              <div className="text-sm" style={{ color: "rgba(245,213,176,0.7)" }}>д. Борки, Великолукский район, Псковская область</div>
+              <div className="text-2xl font-bold" style={{ color: "#f5e8c0" }}>2–3 мая 2026</div>
+              <div className="text-sm" style={{ color: "rgba(245,232,192,0.75)" }}>д. Борки, Великолукский район, Псковская область</div>
             </div>
+          </div>
+
+          {/* Location Badge */}
+          <div className="flex items-center gap-2 mb-10 px-5 py-2.5 rounded-full text-sm" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(200,140,40,0.4)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}>
+            <Icon name="MapPin" size={16} style={{ color: "#d4a030" }} />
+            <span>Псковская область, Великолукский район, деревня Борки</span>
           </div>
 
           {/* CTA Buttons */}
@@ -143,22 +149,22 @@ const Index = () => {
             <Button
               size="lg"
               className="rounded-full px-8 py-4 text-lg font-semibold"
-              style={{ background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }}
+              style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}
             >
               Подать заявку на участие
             </Button>
             <Button
               size="lg"
               className="rounded-full px-8 py-4 text-lg"
-              style={{ background: "rgba(80,20,20,0.5)", border: "1px solid rgba(180,80,60,0.35)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}
+              style={{ background: "rgba(30,30,30,0.7)", border: "1px solid rgba(200,160,60,0.4)", backdropFilter: "blur(12px)", color: "#f0dfa0" }}
             >
               Узнать программу
             </Button>
           </div>
 
           {/* Footer Note */}
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm" style={{ background: "rgba(80,20,20,0.5)", border: "1px solid rgba(180,80,60,0.3)", backdropFilter: "blur(12px)", color: "rgba(245,213,176,0.8)" }}>
-            <Icon name="Heart" size={16} style={{ color: "#c0504a" }} />
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm" style={{ background: "rgba(30,30,30,0.65)", border: "1px solid rgba(200,160,60,0.35)", backdropFilter: "blur(12px)", color: "rgba(240,223,160,0.85)" }}>
+            <Icon name="Heart" size={16} style={{ color: "#c8a020" }} />
             <span>Вход для зрителей — свободный</span>
           </div>
         </div>
@@ -221,8 +227,8 @@ const Index = () => {
               { icon: "Star", label: "Номинации конкурса", value: "8" },
               { icon: "Heart", label: "Вход для зрителей", value: "Бесплатно" },
             ].map((item) => (
-              <div key={item.label} className="rounded-2xl p-6 text-center" style={{ background: "rgba(80,20,20,0.3)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(12px)" }}>
-                <div className="text-3xl font-bold mb-1" style={{ color: "#c0504a" }}>{item.value}</div>
+              <div key={item.label} className="rounded-2xl p-6 text-center" style={{ background: "rgba(20,20,20,0.5)", border: "1px solid rgba(200,160,60,0.2)", backdropFilter: "blur(12px)" }}>
+                <div className="text-3xl font-bold mb-1" style={{ color: "#c8a020" }}>{item.value}</div>
                 <div className="text-xs leading-snug" style={{ color: "rgba(245,213,176,0.7)" }}>{item.label}</div>
               </div>
             ))}
@@ -254,8 +260,8 @@ const Index = () => {
                   className="px-6 py-2 rounded-full text-sm font-semibold transition-all"
                   style={
                     activeYear === item.year
-                      ? { background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }
-                      : { background: "rgba(80,20,20,0.4)", color: "rgba(245,213,176,0.65)", border: "1px solid rgba(160,57,74,0.25)" }
+                      ? { background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }
+                      : { background: "rgba(30,30,30,0.5)", color: "rgba(240,223,160,0.65)", border: "1px solid rgba(200,160,60,0.25)" }
                   }
                 >
                   {item.year}
@@ -324,8 +330,8 @@ const Index = () => {
                 },
               ].map((phase) => (
                 <div key={phase.num} className="rounded-2xl p-8 flex flex-col" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.18)", backdropFilter: "blur(12px)" }}>
-                  <div className="text-3xl font-bold mb-1" style={{ color: "rgba(192,80,74,0.6)" }}>{phase.num}</div>
-                  <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#c0504a" }}>{phase.day}</div>
+                  <div className="text-3xl font-bold mb-1" style={{ color: "rgba(200,160,32,0.55)" }}>{phase.num}</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#c8a020" }}>{phase.day}</div>
                   <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>{phase.title}</h3>
                   <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.72)" }}>{phase.desc}</p>
                 </div>
@@ -337,7 +343,7 @@ const Index = () => {
               <Button
                 size="lg"
                 className="rounded-full px-12 py-4 text-lg font-semibold"
-                style={{ background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }}
+                style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}
               >
                 Подать заявку на участие
               </Button>
@@ -454,7 +460,7 @@ const Index = () => {
                   </div>
                   <Button
                     className="w-full rounded-lg py-3 text-base font-semibold"
-                    style={{ background: "#7a1f2e", color: "#f5d5b0" }}
+                    style={{ background: "#c8a020", color: "#1a1a1a" }}
                   >
                     Отправить заявку
                   </Button>
@@ -480,18 +486,23 @@ const Index = () => {
                       value: "2–3 мая 2026 года",
                     },
                     {
+                      icon: "User",
+                      label: "Президент фестиваля",
+                      value: "Светлана Размыслович",
+                    },
+                    {
                       icon: "Mail",
-                      label: "Email для заявок",
-                      value: "festival@raduga-vluki.ru",
+                      label: "Email фестиваля",
+                      value: "swetslova.ru@yandex.ru",
                     },
                     {
                       icon: "Phone",
                       label: "Телефон",
-                      value: "+7 (8112) XX-XX-XX",
+                      value: "+7-911-887-98-11",
                     },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: "rgba(80,20,20,0.4)", border: "1px solid rgba(160,57,74,0.25)" }}>
-                      <Icon name={item.icon} size={20} style={{ color: "#c0504a", marginTop: 2, flexShrink: 0 }} />
+                      <Icon name={item.icon} size={20} style={{ color: "#c8a020", marginTop: 2, flexShrink: 0 }} />
                       <div>
                         <div className="text-xs font-medium mb-0.5" style={{ color: "rgba(245,213,176,0.55)" }}>{item.label}</div>
                         <div className="text-sm font-medium" style={{ color: "#f5d5b0" }}>{item.value}</div>
@@ -530,7 +541,7 @@ const Index = () => {
                     className="flex-1 px-3 py-2 rounded-lg text-sm text-gray-800"
                     style={{ background: "rgba(255,248,240,0.92)" }}
                   />
-                  <Button size="sm" className="rounded-lg px-4" style={{ background: "#7a1f2e", color: "#f5d5b0" }}>
+                  <Button size="sm" className="rounded-lg px-4" style={{ background: "#c8a020", color: "#1a1a1a" }}>
                     <Mail className="w-4 h-4" />
                   </Button>
                 </div>
