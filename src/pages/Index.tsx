@@ -1,14 +1,28 @@
-import { Compass, Lock, Sparkles, ShieldCheck, Wallet, Leaf, Plus, Minus, Mail } from "lucide-react"
+import { BookOpen, Users, MapPin, Heart, Star, Calendar, Plus, Minus, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import Icon from "@/components/ui/icon"
 
 interface FAQ {
   question: string
   answer: string
 }
 
+const LOGO = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/b4a4eef4-569b-40ca-8e8d-eebd60ca8d2d.jpg"
+const HERO_BG = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/e5cb20ac-65ec-46c5-aa03-766700c05fd9.jpg"
+const FESTIVAL_PHOTO_1 = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/4ba01c9d-0626-47c2-a91c-10bcb9cc6878.jpg"
+const FESTIVAL_PHOTO_2 = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/e5cb20ac-65ec-46c5-aa03-766700c05fd9.jpg"
+
+const galleryYears = [
+  { year: "2022", photo: FESTIVAL_PHOTO_1, caption: "II Всероссийский фестиваль, 450 участников" },
+  { year: "2023", photo: FESTIVAL_PHOTO_2, caption: "III фестиваль — поэты со всей России" },
+  { year: "2024", photo: FESTIVAL_PHOTO_1, caption: "IV фестиваль — звёзды фронтовой поэзии" },
+  { year: "2025", photo: FESTIVAL_PHOTO_2, caption: "V юбилейный фестиваль" },
+]
+
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [activeYear, setActiveYear] = useState("2024")
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
@@ -16,220 +30,316 @@ const Index = () => {
 
   const faqs: FAQ[] = [
     {
-      question: "Насколько физически сложен этот тур?",
+      question: "Как принять участие в фестивале?",
       answer:
-        "Экспедиция в Скрытую Долину требует отличной физической подготовки. Вам предстоит пройти более 15 км по джунглям, спуститься по веревке с 80-метровой высоты и преодолеть подземные реки. Участники должны быть готовы нести рюкзак весом 15 кг и иметь опыт спелеологии или треккинга.",
+        "Для участия в конкурсной программе необходимо подать заявку с подборкой стихотворений (не менее 3 произведений) на тему фронтовой лирики. Заявки принимаются по электронной почте до 1 апреля 2026 года. Для гостей фестиваля вход свободный — приезжайте 2-3 мая в д. Борки Великолукского района.",
     },
     {
-      question: "Что входит в стоимость тура?",
+      question: "Кто может стать участником конкурса?",
       answer:
-        "В стоимость экспедиции включены все разрешения, профессиональные гиды, снаряжение для безопасности, палаточное оборудование, питание на маршруте, трансфер от базового лагеря и страховка экстренной эвакуации. Личные вещи, такие как одежда и средства гигиены, не включены.",
+        "К участию приглашаются поэты всех возрастов и регионов России. Фестиваль принимает авторов-любителей и профессиональных поэтов. Отдельные номинации предусмотрены для молодёжи до 18 лет и для ветеранов. Произведения должны быть посвящены военной теме, памяти защитников Отечества.",
     },
     {
-      question: "Безопасно ли исследовать пещеру Скрытой Долины?",
+      question: "Как добраться до д. Борки?",
       answer:
-        "Безопасность — наш абсолютный приоритет. Все гиды — сертифицированные спасатели-спелеологи, мы используем профессиональное снаряжение, поддерживаем постоянную связь с базовым лагерем и имеем комплексные протоколы на случай ЧП. Погодные условия отслеживаются непрерывно.",
+        "Деревня Борки расположена в Великолукском районе Псковской области. От Великих Лук организуется автобусный трансфер для участников фестиваля. На личном автомобиле: по трассе А-117, далее указатели на Великолукский район. Для иногородних участников организуется содействие в размещении — уточняйте при подаче заявки.",
     },
     {
-      question: "Как забронировать место?",
+      question: "Предусмотрены ли призы и награды?",
       answer:
-        "Группы ограничены 10 участниками, экспедиции проводятся только в сухой сезон (февраль-август). Бронируйте за 6-12 месяцев через наш сайт. Предоплата 50% закрепляет ваше место, полная оплата — за 30 дней до выезда.",
+        "Победители и лауреаты фестиваля получают дипломы, памятные призы и подарки от организаторов. Лучшие произведения публикуются в ежегодном сборнике фестивальной поэзии. Специальные призы учреждаются партнёрами и спонсорами фестиваля.",
+    },
+    {
+      question: "Что включает программа двух дней?",
+      answer:
+        "2 мая: торжественное открытие, конкурсные чтения, мастер-классы от известных поэтов. 3 мая: продолжение конкурса, литературные встречи, экскурсии по памятным местам района, торжественное закрытие с награждением победителей, гала-концерт.",
     },
   ]
 
   return (
-    <div className="min-h-screen bg-[#0B0F12] text-white">
+    <div className="min-h-screen text-white" style={{ backgroundColor: "#1a0a0a" }}>
       {/* Hero Section */}
       <div className="relative min-h-screen">
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url(https://www.elledecoration.vn/wp-content/uploads/2025/03/1-son-doong.jpg)",
-          }}
+          style={{ backgroundImage: `url(${HERO_BG})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,10,10,0.55) 0%, rgba(26,10,10,0.85) 100%)" }} />
         </div>
 
         {/* Navigation */}
         <nav className="relative z-10 flex items-center justify-between p-6">
           {/* Logo */}
-          <div className="flex items-center gap-2 px-4 py-2 bg-black/40 ring-1 ring-white/20 backdrop-blur rounded-full">
-            <Compass className="w-5 h-5" />
-            <span className="font-medium text-balance">Horizon Adventures</span>
+          <div className="flex items-center gap-3 px-3 py-2 rounded-full" style={{ background: "rgba(80,20,20,0.55)", border: "1px solid rgba(180,80,60,0.35)", backdropFilter: "blur(12px)" }}>
+            <img src={LOGO} alt="Логотип фестиваля" className="w-10 h-10 rounded-full object-cover" />
+            <span className="font-semibold text-sm leading-tight max-w-[160px]" style={{ color: "#f5d5b0" }}>
+              «А музы не молчат!»
+            </span>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-1">
-            {["Экспедиция", "Безопасность", "Галерея", "Вопросы", "Контакты"].map((item) => (
+            {[
+              { label: "О фестивале", href: "#about" },
+              { label: "История", href: "#history" },
+              { label: "Программа", href: "#program" },
+              { label: "Вопросы", href: "#faq" },
+              { label: "Контакты", href: "#contacts" },
+            ].map((item) => (
               <a
-                key={item}
-                href="#"
-                className="px-4 py-2 bg-black/40 ring-1 ring-white/20 backdrop-blur rounded-full hover:bg-black/50 transition-colors"
+                key={item.label}
+                href={item.href}
+                className="px-4 py-2 rounded-full text-sm hover:opacity-80 transition-opacity"
+                style={{ background: "rgba(80,20,20,0.5)", border: "1px solid rgba(180,80,60,0.3)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>
 
-          {/* Action Buttons */}
+          {/* Register Button */}
           <div className="flex items-center gap-3">
-            <a
-              href="#"
-              className="px-4 py-2 bg-black/40 ring-1 ring-white/20 backdrop-blur rounded-full hover:bg-black/50 transition-colors"
+            <Button
+              className="rounded-full px-6 font-semibold"
+              style={{ background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }}
             >
-              Войти
-            </a>
-            <Button className="bg-white text-black hover:bg-white/90 rounded-full px-6">Забронировать</Button>
+              Подать заявку
+            </Button>
           </div>
         </nav>
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 text-center">
           {/* Badge */}
-          <div className="mb-6 px-4 py-2 bg-black/40 ring-1 ring-white/20 backdrop-blur rounded-full">
-            <span className="text-sm font-medium">Эксклюзивные групповые экспедиции</span>
+          <div className="mb-6 px-5 py-2 rounded-full text-sm font-medium" style={{ background: "rgba(80,20,20,0.6)", border: "1px solid rgba(180,80,60,0.4)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}>
+            Всероссийский фестиваль • д. Борки, Псковская область
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-light tracking-tight mb-6 text-balance">Войдите в затерянный мир.</h1>
-
-          {/* Subheading */}
-          <p className="text-xl md:text-2xl text-white/90 max-w-4xl mb-12 leading-relaxed text-pretty">
-            Исследуйте грандиозные залы пещеры Скрытой Долины в Южной Америке — уникальную экосистему с собственными джунглями и погодой — в рамках 4-дневной экспедиции с гидом.
+          <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-4 text-balance" style={{ color: "#f5d5b0" }}>
+            «А музы не молчат!»
+          </h1>
+          <p className="text-2xl md:text-3xl font-semibold mb-6" style={{ color: "#c0504a" }}>
+            Фестиваль фронтовой поэзии
           </p>
 
+          {/* Subheading */}
+          <p className="text-lg md:text-xl max-w-3xl mb-10 leading-relaxed text-pretty" style={{ color: "rgba(245,213,176,0.85)" }}>
+            Ежегодный Всероссийский фестиваль, объединяющий поэтов, ветеранов и всех, кому дорога память о защитниках Отечества. Стихи, которые рождаются из сердца — для тех, кто воевал, и тех, кто помнит.
+          </p>
+
+          {/* Date Block */}
+          <div className="flex items-center gap-3 mb-10 px-6 py-4 rounded-2xl" style={{ background: "rgba(80,20,20,0.6)", border: "1px solid rgba(180,80,60,0.4)", backdropFilter: "blur(12px)" }}>
+            <Icon name="Calendar" size={24} style={{ color: "#c0504a" }} />
+            <div className="text-left">
+              <div className="text-2xl font-bold" style={{ color: "#f5d5b0" }}>2–3 мая 2026</div>
+              <div className="text-sm" style={{ color: "rgba(245,213,176,0.7)" }}>д. Борки, Великолукский район, Псковская область</div>
+            </div>
+          </div>
+
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button size="lg" className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-4 text-lg">
-              Забронировать экспедицию
+          <div className="flex flex-col sm:flex-row gap-4 mb-14">
+            <Button
+              size="lg"
+              className="rounded-full px-8 py-4 text-lg font-semibold"
+              style={{ background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }}
+            >
+              Подать заявку на участие
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="bg-black/40 ring-1 ring-white/20 backdrop-blur border-0 text-white hover:bg-black/50 rounded-full px-8 py-4 text-lg"
+              className="rounded-full px-8 py-4 text-lg"
+              style={{ background: "rgba(80,20,20,0.5)", border: "1px solid rgba(180,80,60,0.35)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}
             >
-              Смотреть маршрут
+              Узнать программу
             </Button>
           </div>
 
           {/* Footer Note */}
-          <div className="flex items-center gap-2 px-4 py-2 bg-black/40 ring-1 ring-white/20 backdrop-blur rounded-full">
-            <Lock className="w-4 h-4" />
-            <span className="text-sm font-medium">Безопасность — наш приоритет</span>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm" style={{ background: "rgba(80,20,20,0.5)", border: "1px solid rgba(180,80,60,0.3)", backdropFilter: "blur(12px)", color: "rgba(245,213,176,0.8)" }}>
+            <Icon name="Heart" size={16} style={{ color: "#c0504a" }} />
+            <span>Вход для зрителей — свободный</span>
           </div>
         </div>
       </div>
 
-      {/* Features Section */}
-      <section className="relative z-10 py-24 px-6">
+      {/* Features / About Section */}
+      <section id="about" className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-            {/* Expert-Led Tours */}
-            <div className="rounded-2xl bg-black/20 ring-1 ring-white/15 backdrop-blur p-8 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-black/30 ring-1 ring-white/20 mb-6">
-                <Sparkles className="w-6 h-6" />
+          {/* Organizers Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+              О фестивале
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Организаторы фестиваля</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(245,213,176,0.75)" }}>
+              Фестиваль проводится при поддержке культурных организаций Псковской области
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {/* Organizer 1 */}
+            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(12px)" }}>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+                <Icon name="Star" size={24} style={{ color: "#f5d5b0" }} />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Туры с экспертами</h3>
-              <p className="text-white/80 leading-relaxed">Ведут геологи, спелеологи и местные специалисты.</p>
+              <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>АНО «Центр творчества и досуга «РАДУГА»</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.7)" }}>
+                Главный организатор фестиваля, координирующий всю программу мероприятий
+              </p>
             </div>
 
-            {/* World-Class Safety */}
-            <div className="rounded-2xl bg-black/20 ring-1 ring-white/15 backdrop-blur p-8 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-black/30 ring-1 ring-white/20 mb-6">
-                <ShieldCheck className="w-6 h-6" />
+            {/* Organizer 2 */}
+            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(12px)" }}>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+                <Icon name="BookOpen" size={24} style={{ color: "#f5d5b0" }} />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Мировой уровень безопасности</h3>
-              <p className="text-white/80 leading-relaxed">Строгие протоколы и современное снаряжение.</p>
+              <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>Литературно-художественный музей им. И.А. Васильева</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.7)" }}>
+                Хранитель литературного наследия региона, партнёр по культурной программе
+              </p>
             </div>
 
-            {/* All-Inclusive Package */}
-            <div className="rounded-2xl bg-black/20 ring-1 ring-white/15 backdrop-blur p-8 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-black/30 ring-1 ring-white/20 mb-6">
-                <Wallet className="w-6 h-6" />
+            {/* Organizer 3 */}
+            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(12px)" }}>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+                <Icon name="MapPin" size={24} style={{ color: "#f5d5b0" }} />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Все включено</h3>
-              <p className="text-white/80 leading-relaxed">Разрешения, снаряжение, питание и трансфер.</p>
+              <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>Культурно-информационный центр Великолукского района</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.7)" }}>
+                Информационная и площадочная поддержка фестиваля на территории района
+              </p>
             </div>
+          </div>
 
-            {/* Eco-Friendly Caving */}
-            <div className="rounded-2xl bg-black/20 ring-1 ring-white/15 backdrop-blur p-8 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-black/30 ring-1 ring-white/20 mb-6">
-                <Leaf className="w-6 h-6" />
+          {/* Features row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { icon: "Users", label: "Участники со всей России", value: "500+" },
+              { icon: "BookOpen", label: "Лет истории фестиваля", value: "5+" },
+              { icon: "Star", label: "Номинации конкурса", value: "8" },
+              { icon: "Heart", label: "Вход для зрителей", value: "Бесплатно" },
+            ].map((item) => (
+              <div key={item.label} className="rounded-2xl p-6 text-center" style={{ background: "rgba(80,20,20,0.3)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(12px)" }}>
+                <div className="text-3xl font-bold mb-1" style={{ color: "#c0504a" }}>{item.value}</div>
+                <div className="text-xs leading-snug" style={{ color: "rgba(245,213,176,0.7)" }}>{item.label}</div>
               </div>
-              <h3 className="text-xl font-semibold mb-4">Эко-спелеология</h3>
-              <p className="text-white/80 leading-relaxed">Мы бережно сохраняем экосистему пещеры.</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Journey Section */}
-      <section className="relative z-10 py-24 px-6">
+      {/* History / Gallery Section */}
+      <section id="history" className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-12">
+          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(16px)" }}>
             {/* Section Header */}
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-balance">Ваше эпическое путешествие</h2>
-              <p className="text-xl text-white/80 max-w-3xl mx-auto text-pretty">
-                От джунглей до подземных лагерей — вот что вас ждет.
+            <div className="text-center mb-12">
+              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+                История
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Фестиваль по годам</h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(245,213,176,0.75)" }}>
+                Каждый год собирает новых поэтов, новые голоса и новые страницы в историю фронтовой лирики
               </p>
             </div>
 
-            {/* Journey Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-              {/* Phase 1: Briefing & Prep */}
-              <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-8 h-80 flex flex-col">
-                <div className="flex-1">
-                  <div className="text-3xl font-bold text-white/60 mb-4">01.</div>
-                  <h3 className="text-xl font-semibold mb-4">Инструктаж</h3>
-                  <p className="text-white/80 leading-relaxed text-sm">
-                    Ваше приключение начинается в базовом лагере с полного инструктажа по безопасности и проверки снаряжения.
-                  </p>
-                </div>
-              </div>
-
-              {/* Phase 2: The Trek */}
-              <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-8 h-80 flex flex-col">
-                <div className="flex-1">
-                  <div className="text-3xl font-bold text-white/60 mb-4">02.</div>
-                  <h3 className="text-xl font-semibold mb-4">Треккинг</h3>
-                  <p className="text-white/80 leading-relaxed text-sm">
-                    Идите через нетронутые джунгли, пересекайте реки и ночуйте в удаленных точках по пути ко входу в Скрытую Долину.
-                  </p>
-                </div>
-              </div>
-
-              {/* Phase 3: Caving */}
-              <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-8 h-80 flex flex-col">
-                <div className="flex-1">
-                  <div className="text-3xl font-bold text-white/60 mb-4">03.</div>
-                  <h3 className="text-xl font-semibold mb-4">Спелеология</h3>
-                  <p className="text-white/80 leading-relaxed text-sm">
-                    Спуститесь в пещеру, чтобы увидеть гигантские сталагмиты, исследовать огромные залы и уникальные подземные джунгли.
-                  </p>
-                </div>
-              </div>
-
-              {/* Phase 4: Base Camp */}
-              <div className="rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-8 h-80 flex flex-col">
-                <div className="flex-1">
-                  <div className="text-3xl font-bold text-white/60 mb-4">04.</div>
-                  <h3 className="text-xl font-semibold mb-4">Базовый лагерь</h3>
-                  <p className="text-white/80 leading-relaxed text-sm">
-                    Проведите ночи на потрясающих стоянках внутри пещеры, делясь историями с группой перед обратным путем.
-                  </p>
-                </div>
-              </div>
+            {/* Year Tabs */}
+            <div className="flex justify-center gap-3 mb-10 flex-wrap">
+              {galleryYears.map((item) => (
+                <button
+                  key={item.year}
+                  onClick={() => setActiveYear(item.year)}
+                  className="px-6 py-2 rounded-full text-sm font-semibold transition-all"
+                  style={
+                    activeYear === item.year
+                      ? { background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }
+                      : { background: "rgba(80,20,20,0.4)", color: "rgba(245,213,176,0.65)", border: "1px solid rgba(160,57,74,0.25)" }
+                  }
+                >
+                  {item.year}
+                </button>
+              ))}
             </div>
 
-            {/* Check Availability Button */}
+            {/* Gallery Image */}
+            {galleryYears.filter((g) => g.year === activeYear).map((g) => (
+              <div key={g.year} className="rounded-2xl overflow-hidden">
+                <img
+                  src={g.photo}
+                  alt={`Фестиваль ${g.year}`}
+                  className="w-full h-96 object-cover"
+                />
+                <div className="p-6 text-center" style={{ background: "rgba(80,20,20,0.4)" }}>
+                  <p className="text-lg font-medium" style={{ color: "#f5d5b0" }}>{g.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Program Section */}
+      <section id="program" className="relative z-10 py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(16px)" }}>
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+                Программа
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Два дня поэзии и памяти</h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(245,213,176,0.75)" }}>
+                2–3 мая 2026 года, деревня Борки
+              </p>
+            </div>
+
+            {/* Program Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+              {[
+                {
+                  num: "01.",
+                  day: "2 мая",
+                  title: "Открытие фестиваля",
+                  desc: "Торжественная церемония открытия, приветственные слова организаторов и почётных гостей, возложение цветов к мемориалу.",
+                },
+                {
+                  num: "02.",
+                  day: "2 мая",
+                  title: "Конкурсные чтения",
+                  desc: "Участники представляют свои произведения жюри. Мастер-классы от известных поэтов и писателей, литературные дискуссии.",
+                },
+                {
+                  num: "03.",
+                  day: "3 мая",
+                  title: "Литературные встречи",
+                  desc: "Экскурсии по памятным местам района, встречи с ветеранами, презентация сборника лучших произведений прошлых лет.",
+                },
+                {
+                  num: "04.",
+                  day: "3 мая",
+                  title: "Закрытие и награждение",
+                  desc: "Торжественное закрытие, объявление победителей и лауреатов, вручение дипломов и призов, гала-концерт.",
+                },
+              ].map((phase) => (
+                <div key={phase.num} className="rounded-2xl p-8 flex flex-col" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.18)", backdropFilter: "blur(12px)" }}>
+                  <div className="text-3xl font-bold mb-1" style={{ color: "rgba(192,80,74,0.6)" }}>{phase.num}</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#c0504a" }}>{phase.day}</div>
+                  <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>{phase.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.72)" }}>{phase.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Registration Button */}
             <div className="text-center">
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-white/90 rounded-full px-12 py-4 text-lg font-semibold"
+                className="rounded-full px-12 py-4 text-lg font-semibold"
+                style={{ background: "#7a1f2e", color: "#f5d5b0", border: "1px solid #a0394a" }}
               >
-                Проверить наличие мест
+                Подать заявку на участие
               </Button>
             </div>
           </div>
@@ -237,17 +347,20 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative z-10 py-24 px-6">
+      <section id="faq" className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-12">
+          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(16px)" }}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              {/* Left Column - Title and Description */}
+              {/* Left Column */}
               <div>
-                <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-balance">
+                <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+                  Вопросы и ответы
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "#f5d5b0" }}>
                   Частые вопросы
                 </h2>
-                <p className="text-xl text-white/80 leading-relaxed text-pretty">
-                  Все, что нужно знать об экспедиции: от физических требований до бронирования места в этом эксклюзивном приключении.
+                <p className="text-lg leading-relaxed" style={{ color: "rgba(245,213,176,0.75)" }}>
+                  Всё, что нужно знать об участии в фестивале: от подачи заявки до дороги в д. Борки.
                 </p>
               </div>
 
@@ -256,22 +369,23 @@ const Index = () => {
                 {faqs.map((faq, index) => (
                   <div
                     key={index}
-                    className="rounded-2xl bg-white/5 ring-1 ring-white/10 backdrop-blur overflow-hidden"
+                    className="rounded-2xl overflow-hidden"
+                    style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)" }}
                   >
                     <button
                       onClick={() => toggleFaq(index)}
-                      className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                      className="w-full p-6 text-left flex items-center justify-between transition-colors hover:opacity-90"
                     >
-                      <h3 className="text-lg font-semibold pr-4">{faq.question}</h3>
+                      <h3 className="text-base font-semibold pr-4" style={{ color: "#f5d5b0" }}>{faq.question}</h3>
                       {openFaq === index ? (
-                        <Minus className="w-5 h-5 flex-shrink-0" />
+                        <Minus className="w-5 h-5 flex-shrink-0" style={{ color: "#c0504a" }} />
                       ) : (
-                        <Plus className="w-5 h-5 flex-shrink-0" />
+                        <Plus className="w-5 h-5 flex-shrink-0" style={{ color: "#c0504a" }} />
                       )}
                     </button>
                     {openFaq === index && (
                       <div className="px-6 pb-6">
-                        <p className="text-white/80 leading-relaxed">{faq.answer}</p>
+                        <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.8)" }}>{faq.answer}</p>
                       </div>
                     )}
                   </div>
@@ -283,83 +397,107 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="relative z-10 py-24 px-6">
+      <section id="contacts" className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl bg-black/20 ring-1 ring-white/15 backdrop-blur p-12">
+          <div className="rounded-3xl p-12" style={{ background: "rgba(80,20,20,0.3)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(16px)" }}>
             {/* Section Header */}
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-balance">Свяжитесь с нами</h2>
+              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+                Контакты
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Свяжитесь с нами</h2>
+              <p className="text-lg" style={{ color: "rgba(245,213,176,0.75)" }}>
+                Подайте заявку или задайте вопрос — мы ответим в течение одного рабочего дня
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-              {/* Left Column - Contact Form */}
-              <div className="rounded-2xl bg-white/95 text-black p-8 shadow-2xl">
-                <h3 className="text-2xl font-bold mb-6">Отправить запрос</h3>
-                <form className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Contact Form */}
+              <div className="rounded-2xl p-8 shadow-2xl" style={{ background: "rgba(255,248,240,0.97)" }}>
+                <h3 className="text-2xl font-bold mb-6" style={{ color: "#4a1020" }}>Подать заявку на участие</h3>
+                <form className="space-y-5">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Имя
-                    </label>
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Имя и фамилия</label>
                     <input
                       type="text"
-                      id="name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
+                      style={{ borderColor: "#c0504a", focusRingColor: "#7a1f2e" }}
                       placeholder="Ваше полное имя"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email
-                    </label>
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Email</label>
                     <input
                       type="email"
-                      id="email"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="your.email@example.com"
+                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
+                      style={{ borderColor: "#c0504a" }}
+                      placeholder="your@email.ru"
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Сообщение
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={5}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                      placeholder="Расскажите о ваших интересах в экспедиции..."
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Город / регион</label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none"
+                      style={{ borderColor: "#c0504a" }}
+                      placeholder="Откуда вы?"
                     />
                   </div>
-                  <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg py-3 font-normal text-base">
-                    Отправить сообщение
+                  <div>
+                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Ваши стихотворения / вопрос</label>
+                    <textarea
+                      rows={4}
+                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none resize-none"
+                      style={{ borderColor: "#c0504a" }}
+                      placeholder="Прикрепите текст или задайте вопрос..."
+                    />
+                  </div>
+                  <Button
+                    className="w-full rounded-lg py-3 text-base font-semibold"
+                    style={{ background: "#7a1f2e", color: "#f5d5b0" }}
+                  >
+                    Отправить заявку
                   </Button>
                 </form>
               </div>
 
-              {/* Right Column - Contact Info */}
-              <div className="space-y-8">
-                <div>
-                  <p className="text-xl text-white/90 leading-relaxed text-pretty">
-                    По вопросам индивидуальных туров, партнерства или для СМИ — свяжитесь с нами. Мы отвечаем в течение одного рабочего дня.
-                  </p>
-                </div>
+              {/* Contact Info */}
+              <div className="space-y-6">
+                <p className="text-lg leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                  Фестиваль «А музы не молчат!» объединяет поэтов и любителей поэзии со всей России. Приезжайте — вход для зрителей свободный!
+                </p>
 
-                {/* Profile Card */}
-                <div className="rounded-2xl bg-white/95 text-black p-6 shadow-2xl">
-                  <div className="flex items-center gap-4 mb-4">
-                    <img
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-                      alt="Маркус Уильямс"
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <h4 className="text-lg font-semibold">Маркус Уильямс</h4>
-                      <p className="text-gray-600">Руководитель экспедиций</p>
+                <div className="space-y-4">
+                  {[
+                    {
+                      icon: "MapPin",
+                      label: "Место проведения",
+                      value: "д. Борки, Великолукский район, Псковская область",
+                    },
+                    {
+                      icon: "Calendar",
+                      label: "Дата",
+                      value: "2–3 мая 2026 года",
+                    },
+                    {
+                      icon: "Mail",
+                      label: "Email для заявок",
+                      value: "festival@raduga-vluki.ru",
+                    },
+                    {
+                      icon: "Phone",
+                      label: "Телефон",
+                      value: "+7 (8112) XX-XX-XX",
+                    },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: "rgba(80,20,20,0.4)", border: "1px solid rgba(160,57,74,0.25)" }}>
+                      <Icon name={item.icon} size={20} style={{ color: "#c0504a", marginTop: 2, flexShrink: 0 }} />
+                      <div>
+                        <div className="text-xs font-medium mb-0.5" style={{ color: "rgba(245,213,176,0.55)" }}>{item.label}</div>
+                        <div className="text-sm font-medium" style={{ color: "#f5d5b0" }}>{item.value}</div>
+                      </div>
                     </div>
-                  </div>
-                  <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg flex items-center justify-center gap-2">
-                    <Mail className="w-4 h-4" />
-                    Написать
-                  </Button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -368,83 +506,78 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 py-24 px-6">
+      <footer className="relative z-10 py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl bg-white/[0.03] backdrop-blur-2xl ring-1 ring-white/10 p-12">
-            {/* Main Footer Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-              {/* Brand Section */}
+          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(160,57,74,0.15)", backdropFilter: "blur(16px)" }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+              {/* Brand */}
               <div className="lg:col-span-2">
-                <div className="flex items-center gap-2 mb-6">
-                  <Compass className="w-6 h-6" />
-                  <span className="text-xl font-semibold">Horizon Adventures</span>
+                <div className="flex items-center gap-3 mb-4">
+                  <img src={LOGO} alt="Логотип" className="w-12 h-12 rounded-full object-cover" />
+                  <div>
+                    <div className="font-bold text-base" style={{ color: "#f5d5b0" }}>«А музы не молчат!»</div>
+                    <div className="text-xs" style={{ color: "rgba(245,213,176,0.55)" }}>Всероссийский фестиваль фронтовой поэзии</div>
+                  </div>
                 </div>
-                <p className="text-white/80 leading-relaxed text-pretty">
-                  Официальный туроператор экспедиций в Скрытую Долину — крупнейшую пещеру мира. Мы преданы безопасности, охране природы и незабываемым приключениям.
+                <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(245,213,176,0.65)" }}>
+                  Ежегодный фестиваль в деревне Борки Великолукского района Псковской области. Место встречи поэтов, ветеранов и всех, кому дорога память о защитниках Родины.
                 </p>
-              </div>
-
-              {/* Expedition Links */}
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider mb-6">ЭКСПЕДИЦИЯ</h3>
-                <ul className="space-y-3">
-                  {["Маршрут", "Цены", "Список снаряжения", "Фотогалерея"].map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-white/70 hover:text-white transition-colors text-sm leading-relaxed">
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* About Links */}
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider mb-6">О НАС</h3>
-                <ul className="space-y-3">
-                  {["Наша миссия", "Стандарты безопасности", "Команда", "Охрана природы"].map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-white/70 hover:text-white transition-colors text-sm leading-relaxed">
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Resources Links */}
-              <div>
-                <h3 className="text-sm font-bold uppercase tracking-wider mb-6">ПОДДЕРЖКА</h3>
-                <ul className="space-y-3">
-                  {["Справочный центр", "Контакты", "Вопросы и ответы", "Условия"].map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-white/70 hover:text-white transition-colors text-sm leading-relaxed">
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Newsletter Section */}
-            <div className="border-t border-white/10 pt-12 mb-12">
-              <div className="max-w-md">
-                <h3 className="text-lg font-semibold mb-4">Новости экспедиций</h3>
-                <div className="flex gap-3">
+                {/* Newsletter */}
+                <div className="flex gap-2">
                   <input
                     type="email"
-                    placeholder="Введите ваш email"
-                    className="flex-1 px-4 py-3 rounded-lg bg-white/5 ring-1 ring-white/20 backdrop-blur border-0 text-white placeholder:text-white/50 focus:ring-2 focus:ring-white/30 focus:outline-none"
+                    placeholder="Ваш email"
+                    className="flex-1 px-3 py-2 rounded-lg text-sm text-gray-800"
+                    style={{ background: "rgba(255,248,240,0.92)" }}
                   />
-                  <Button className="bg-white text-black hover:bg-white/90 rounded-lg px-6 h-[50px]">Подписаться</Button>
+                  <Button size="sm" className="rounded-lg px-4" style={{ background: "#7a1f2e", color: "#f5d5b0" }}>
+                    <Mail className="w-4 h-4" />
+                  </Button>
                 </div>
+                <p className="text-xs mt-2" style={{ color: "rgba(245,213,176,0.4)" }}>Подпишитесь на новости фестиваля</p>
+              </div>
+
+              {/* Links */}
+              <div>
+                <h4 className="font-semibold mb-4 text-sm" style={{ color: "#f5d5b0" }}>Разделы</h4>
+                <ul className="space-y-2">
+                  {["О фестивале", "История", "Программа", "Вопросы", "Контакты"].map((link) => (
+                    <li key={link}>
+                      <a href="#" className="text-sm hover:opacity-80 transition-opacity" style={{ color: "rgba(245,213,176,0.65)" }}>
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Organizers */}
+              <div>
+                <h4 className="font-semibold mb-4 text-sm" style={{ color: "#f5d5b0" }}>Организаторы</h4>
+                <ul className="space-y-3">
+                  {[
+                    "АНО «ЦТиД «РАДУГА»",
+                    "Музей им. И.А. Васильева",
+                    "КИЦ Великолукского района",
+                  ].map((org) => (
+                    <li key={org} className="text-xs leading-snug" style={{ color: "rgba(245,213,176,0.65)" }}>
+                      {org}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            {/* Sub-footer */}
-            <div className="border-t border-white/10 pt-8">
-              <p className="text-white/60 text-sm text-center">© 2025 Horizon Adventures</p>
+            {/* Divider & Copyright */}
+            <div className="pt-8" style={{ borderTop: "1px solid rgba(160,57,74,0.2)" }}>
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-sm" style={{ color: "rgba(245,213,176,0.45)" }}>
+                  © 2026 Фестиваль «А музы не молчат!» · Псковская область
+                </p>
+                <p className="text-xs" style={{ color: "rgba(245,213,176,0.35)" }}>
+                  д. Борки, Великолукский район · 2–3 мая 2026
+                </p>
+              </div>
             </div>
           </div>
         </div>
