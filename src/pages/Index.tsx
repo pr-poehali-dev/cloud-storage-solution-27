@@ -75,6 +75,7 @@ const galleryYears = [
 const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [activeYear, setActiveYear] = useState("2024")
+  const [contestTab, setContestTab] = useState<"position"|"rules">("position")
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
@@ -136,6 +137,7 @@ const Index = () => {
               { label: "О фестивале", href: "#about" },
               { label: "История", href: "#history" },
               { label: "Программа", href: "#program" },
+              { label: "Конкурс", href: "#contest" },
               { label: "Вопросы", href: "#faq" },
               { label: "Контакты", href: "#contacts" },
             ].map((item) => (
@@ -163,6 +165,18 @@ const Index = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 text-center">
+          {/* Contest Badge */}
+          <a href="#contest" className="group mb-6 flex items-center gap-3 px-6 py-3 rounded-2xl w-full max-w-xl transition-opacity hover:opacity-90" style={{ background: "rgba(60,35,10,0.7)", border: "1px solid rgba(200,160,40,0.55)", backdropFilter: "blur(12px)" }}>
+            <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "rgba(200,160,32,0.25)", border: "1px solid rgba(200,160,32,0.4)" }}>
+              <Icon name="Award" size={16} style={{ color: "#c8a020" }} />
+            </div>
+            <div className="text-left flex-1">
+              <div className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: "#c8a020" }}>Конкурс чтецов</div>
+              <div className="text-sm font-semibold leading-snug" style={{ color: "#f5e8c0" }}>«Победное Слово над Ловатью»</div>
+            </div>
+            <Icon name="ChevronRight" size={16} style={{ color: "rgba(200,160,40,0.7)" }} />
+          </a>
+
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-4 text-balance" style={{ color: "#f5e8c0" }}>
             «А музы не молчат!»
@@ -500,6 +514,200 @@ const Index = () => {
             >
               Подать заявку на участие
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Contest Section */}
+      <section id="contest" className="relative z-10 py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
+              Конкурс чтецов
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>«Победное Слово над Ловатью»</h2>
+            <p className="text-base max-w-3xl mx-auto leading-relaxed" style={{ color: "rgba(245,213,176,0.75)" }}>
+              Общероссийский конкурс среди детей и юношества на лучшее исполнение стихотворений и прозы патриотической тематики современных авторов
+            </p>
+          </div>
+
+          {/* Age groups */}
+          <div className="grid grid-cols-3 gap-4 mb-12">
+            {[
+              { age: "8–10 лет", label: "Младшая группа" },
+              { age: "11–14 лет", label: "Средняя группа" },
+              { age: "15–18 лет", label: "Старшая группа" },
+            ].map((g) => (
+              <div key={g.age} className="rounded-2xl p-5 text-center" style={{ background: "rgba(60,35,10,0.35)", border: "1px solid rgba(140,90,30,0.25)" }}>
+                <div className="text-2xl font-bold mb-1" style={{ color: "#c8a020" }}>{g.age}</div>
+                <div className="text-xs" style={{ color: "rgba(245,213,176,0.7)" }}>{g.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tabs */}
+          <div>
+                <div className="flex gap-3 mb-8">
+                  {([["position", "Положение"], ["rules", "Регламент"]] as const).map(([id, label]) => (
+                    <button key={id} onClick={() => setContestTab(id)}
+                      className="px-6 py-2.5 rounded-full text-sm font-semibold transition-all"
+                      style={contestTab === id
+                        ? { background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }
+                        : { background: "rgba(30,30,30,0.5)", color: "rgba(240,223,160,0.65)", border: "1px solid rgba(200,160,60,0.25)" }
+                      }>{label}</button>
+                  ))}
+                </div>
+
+                {contestTab === "position" && (
+                  <div className="rounded-3xl overflow-hidden" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(140,90,30,0.2)" }}>
+                    {[
+                      {
+                        num: "I", title: "Общие положения",
+                        content: (
+                          <div className="space-y-3 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <p>Общероссийский Конкурс «Победное Слово над Ловатью» проводится в рамках Фестиваля фронтовой поэзии и песни «А музы не молчат!».</p>
+                            <p className="font-semibold" style={{ color: "#f5d5b0" }}>Конкурс учреждён:</p>
+                            <ul className="space-y-2 pl-4">
+                              <li>• АНО «Центр творчества и досуга «РАДУГА» — Председатель, член Союза писателей России Размыслович Светлана Сергеевна</li>
+                              <li>• Национальным Фондом развития культуры, туризма и ремёсел «Осиянная Русь» — Президент Фонда Ковалёв Дмитрий Александрович</li>
+                              <li>• Филиалом Государственного фонда «Защитники Отечества» по Псковской области — руководитель Васильева Надежда Юрьевна</li>
+                            </ul>
+                            <p>Конкурс проводится один раз в год среди участников трёх возрастных категорий: 8–10 лет, 11–14 лет и 15–18 лет.</p>
+                          </div>
+                        )
+                      },
+                      {
+                        num: "II", title: "Партнёры конкурса",
+                        content: (
+                          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            {["Комитет Культуры Администрации города Великие Луки","МБУК «Информационно-культурный центр» Великолукского района","Союз писателей России","Союз десантников Псковской области","Союз женщин России","Союз краеведов Псковской области","Всероссийское общественное движение «Матери России»","Региональный штаб Комитета Семей Воинов Отечества по Псковской области","Отделение партии «Единая Россия» по г. Великие Луки","МБУК «Великолукский драматический театр»"].map((p, i) => (
+                              <li key={i} className="flex items-start gap-2"><span style={{ color: "#c8a020" }}>{i+1}.</span>{p}</li>
+                            ))}
+                          </ul>
+                        )
+                      },
+                      {
+                        num: "III", title: "Цели и задачи",
+                        content: (
+                          <div className="space-y-3 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <p>Конкурс проводится в целях ознакомления и изучения патриотической поэзии и прозы современных авторов, поддержания высокого литературного уровня молодёжи, выявления и поддержки талантливых детей, воспитания культуры родной речи, сохранения русского языка.</p>
+                            <ul className="space-y-2 pl-4">
+                              <li>• Знакомство детей и юношества с современной поэзией и прозой патриотической и исторической направленности</li>
+                              <li>• Формирование устойчивого интереса к героической истории России, событиям исторического значения в настоящее время</li>
+                              <li>• Сохранение исторической памяти о доблести русского оружия, включая Великую Отечественную войну и СВО</li>
+                              <li>• Повышение культурного, эстетического и образовательного уровня подрастающего поколения</li>
+                              <li>• Выявление одарённых детей для участия во всероссийских и международных конкурсах, фестивалях и олимпиадах</li>
+                            </ul>
+                          </div>
+                        )
+                      },
+                      {
+                        num: "IV", title: "Оргкомитет конкурса",
+                        content: (
+                          <div className="space-y-2 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <p>Оргкомитет составляют представители учредителей в равных пропорциях. Оргкомитет принимает Регламент, утверждает логотип и фирменный стиль, критерии оценки, состав жюри, организует освещение в СМИ, привлекает спонсоров и партнёров, организует церемонию награждения победителей.</p>
+                          </div>
+                        )
+                      },
+                      {
+                        num: "V", title: "Жюри конкурса",
+                        content: (
+                          <div className="space-y-2 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <p>Жюри ежегодно формируется из ведущих поэтов и писателей — членов Союза писателей России, известных артистов, режиссёров, журналистов и представителей творческих профессий.</p>
+                            <p>Состав жюри подлежит ежегодной обязательной ротации не менее 30% от общего числа членов.</p>
+                          </div>
+                        )
+                      },
+                      {
+                        num: "VI", title: "Проведение конкурса",
+                        content: (
+                          <div className="space-y-2 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <p>Заявки принимаются исключительно по электронной почте по утверждённой форме. Итоговые конкурсные чтения проводятся в г. Великие Луки и/или в Великолукском районе Псковской области.</p>
+                          </div>
+                        )
+                      },
+                    ].map((section) => (
+                      <details key={section.num} className="group border-b last:border-b-0" style={{ borderColor: "rgba(140,90,30,0.2)" }}>
+                        <summary className="flex items-center gap-4 px-8 py-5 cursor-pointer list-none hover:opacity-90">
+                          <span className="text-lg font-bold w-8 flex-shrink-0" style={{ color: "#c8a020" }}>{section.num}.</span>
+                          <span className="font-semibold text-base flex-1" style={{ color: "#f5d5b0" }}>{section.title}</span>
+                          <Icon name="ChevronDown" size={18} style={{ color: "rgba(200,160,40,0.6)" }} />
+                        </summary>
+                        <div className="px-8 pb-6 pl-20">{section.content}</div>
+                      </details>
+                    ))}
+                  </div>
+                )}
+
+                {contestTab === "rules" && (
+                  <div className="rounded-3xl overflow-hidden" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(140,90,30,0.2)" }}>
+                    {[
+                      {
+                        num: "I", title: "Общие положения",
+                        content: (
+                          <div className="space-y-2 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <p>Конкурс проводится один раз в год. С 2026 года добавлена новая номинация — «Авторское стихотворение», в которой определяется лучшее стихотворение, написанное автором от 8 до 18 лет.</p>
+                          </div>
+                        )
+                      },
+                      {
+                        num: "II", title: "Порядок проведения",
+                        content: (
+                          <div className="space-y-2 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <ul className="space-y-2">
+                              <li><span style={{ color: "#c8a020" }}>Период проведения:</span> 16 марта — 26 апреля 2026 года</li>
+                              <li><span style={{ color: "#c8a020" }}>Финальные чтения:</span> 2 мая 2026 года, г. Великие Луки</li>
+                              <li><span style={{ color: "#c8a020" }}>Заявка включает:</span> анкету установленного образца, согласие на обработку персональных данных, видеоролик с чтением произведения (для авторского стихотворения — дополнительно текст)</li>
+                              <li><span style={{ color: "#c8a020" }}>Адрес для заявок:</span> <span className="underline">swetslova.ru@yandex.ru</span></li>
+                              <li><span style={{ color: "#c8a020" }}>Голосование:</span> в группе Фестиваля «ВКонтакте» — зрительское голосование; по 5 финалистов в каждой возрастной группе</li>
+                              <li><span style={{ color: "#c8a020" }}>Все видеоматериалы</span> публикуются в группах Фестиваля (ВКонтакте, Телеграм, сайт музафронта.рф)</li>
+                            </ul>
+                          </div>
+                        )
+                      },
+                      {
+                        num: "III", title: "Требования к видеоматериалу",
+                        content: (
+                          <ul className="space-y-2 text-sm" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <li>• Формат видеоролика — <strong style={{ color: "#f5d5b0" }}>горизонтальный</strong></li>
+                            <li>• Обязательно объявить автора и название стихотворения перед декламацией</li>
+                            <li>• Название файла: <span style={{ color: "#c8a020" }}>Фамилия_Имя_Возраст_Город</span> (пример: Иванов_Иван_10 лет_Псков)</li>
+                            <li>• В теме письма: «На конкурс «Победное Слово над Ловатью»</li>
+                            <li>• Продолжительность — <strong style={{ color: "#f5d5b0" }}>не более 3 минут</strong></li>
+                          </ul>
+                        )
+                      },
+                      {
+                        num: "IV", title: "Жюри конкурса",
+                        content: (
+                          <div className="space-y-2 text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
+                            <p>Жюри ежегодно формируется из ведущих поэтов и писателей — членов Союза писателей России, известных артистов, режиссёров, журналистов и представителей творческих профессий согласно Положению о Фестивале.</p>
+                            <p>Состав жюри подлежит ежегодной обязательной ротации не менее 30% от общего числа членов.</p>
+                          </div>
+                        )
+                      },
+                    ].map((section) => (
+                      <details key={section.num} className="group border-b last:border-b-0" style={{ borderColor: "rgba(140,90,30,0.2)" }}>
+                        <summary className="flex items-center gap-4 px-8 py-5 cursor-pointer list-none hover:opacity-90">
+                          <span className="text-lg font-bold w-8 flex-shrink-0" style={{ color: "#c8a020" }}>{section.num}.</span>
+                          <span className="font-semibold text-base flex-1" style={{ color: "#f5d5b0" }}>{section.title}</span>
+                          <Icon name="ChevronDown" size={18} style={{ color: "rgba(200,160,40,0.6)" }} />
+                        </summary>
+                        <div className="px-8 pb-6 pl-20">{section.content}</div>
+                      </details>
+                    ))}
+                  </div>
+                )}
+
+                {/* CTA */}
+                <div className="mt-10 text-center">
+                  <a href="mailto:swetslova.ru@yandex.ru">
+                    <Button size="lg" className="rounded-full px-10 font-semibold" style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}>
+                      Подать заявку на конкурс
+                    </Button>
+                  </a>
+                </div>
           </div>
         </div>
       </section>
