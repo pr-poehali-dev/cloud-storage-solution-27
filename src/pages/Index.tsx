@@ -1,7 +1,18 @@
 import { BookOpen, Users, MapPin, Heart, Star, Calendar, Plus, Minus, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Icon from "@/components/ui/icon"
+
+const LIST_PHOTOS_URL = "https://functions.poehali.dev/23053f98-85ac-4dbb-81fb-073764742665"
+
+const ALBUM_YEARS = ["2025","2024","2023","2022","2021","2020","2019","2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008"]
+const ALBUMS = [
+  ...ALBUM_YEARS.map(y => ({ id: y, label: y, prefix: `${y}/` })),
+  { id: "letopis", label: "Летопись", prefix: "Летопись/" },
+]
+
+interface Photo { key: string; url: string }
+interface AlbumData { photos: Photo[]; loaded: boolean; loading: boolean }
 
 interface FAQ {
   question: string
@@ -76,6 +87,31 @@ const Index = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [activeYear, setActiveYear] = useState("2024")
   const [contestTab, setContestTab] = useState<"position"|"rules">("position")
+  const [activeAlbum, setActiveAlbum] = useState<string | null>(null)
+  const [albumCache, setAlbumCache] = useState<Record<string, AlbumData>>({})
+  const [lightbox, setLightbox] = useState<{ photos: Photo[]; index: number } | null>(null)
+
+  const loadAlbum = useCallback(async (albumId: string) => {
+    const album = ALBUMS.find(a => a.id === albumId)
+    if (!album) return
+    if (albumCache[albumId]?.loaded || albumCache[albumId]?.loading) return
+    setAlbumCache(prev => ({ ...prev, [albumId]: { photos: [], loaded: false, loading: true } }))
+    try {
+      const res = await fetch(`${LIST_PHOTOS_URL}?prefix=${encodeURIComponent(album.prefix)}`)
+      const data = await res.json()
+      setAlbumCache(prev => ({ ...prev, [albumId]: { photos: data.photos || [], loaded: true, loading: false } }))
+    } catch {
+      setAlbumCache(prev => ({ ...prev, [albumId]: { photos: [], loaded: true, loading: false } }))
+    }
+  }, [albumCache])
+
+  useEffect(() => {
+    if (activeAlbum) loadAlbum(activeAlbum)
+  }, [activeAlbum])
+
+  const openAlbum = (id: string) => {
+    setActiveAlbum(prev => prev === id ? null : id)
+  }
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index)
@@ -424,7 +460,99 @@ const Index = () => {
             </div>
           </div>
         </div>
+
+        {/* Photo Albums */}
+        <div className="max-w-5xl mx-auto mt-20 px-6">
+          <div className="text-center mb-10">
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
+              Фотоальбомы
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold" style={{ color: "#f5d5b0" }}>Архив фотографий</h2>
+          </div>
+
+          <div className="space-y-3">
+            {ALBUMS.map((album) => {
+              const isOpen = activeAlbum === album.id
+              const data = albumCache[album.id]
+              const isLetopis = album.id === "letopis"
+              return (
+                <div key={album.id} className="rounded-2xl overflow-hidden" style={{ background: "rgba(60,35,10,0.3)", border: `1px solid ${isOpen ? "rgba(200,160,32,0.5)" : "rgba(140,90,30,0.2)"}` }}>
+                  <button
+                    onClick={() => openAlbum(album.id)}
+                    className="w-full flex items-center justify-between px-6 py-4 hover:opacity-90 transition-opacity"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: isLetopis ? "rgba(200,160,32,0.2)" : "rgba(100,60,10,0.5)", border: "1px solid rgba(140,90,30,0.4)" }}>
+                        <Icon name={isLetopis ? "BookOpen" : "Images"} size={16} style={{ color: isLetopis ? "#c8a020" : "#f5d5b0" }} />
+                      </div>
+                      <span className="font-semibold text-base" style={{ color: isLetopis ? "#c8a020" : "#f5d5b0" }}>{album.label}</span>
+                      {data?.loaded && (
+                        <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "rgba(100,60,10,0.5)", color: "rgba(245,213,176,0.6)" }}>
+                          {data.photos.length} фото
+                        </span>
+                      )}
+                    </div>
+                    <Icon name={isOpen ? "ChevronUp" : "ChevronDown"} size={18} style={{ color: "rgba(200,160,40,0.6)" }} />
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-6 pb-6">
+                      {data?.loading && (
+                        <div className="text-center py-8 text-sm" style={{ color: "rgba(245,213,176,0.5)" }}>Загрузка...</div>
+                      )}
+                      {data?.loaded && data.photos.length === 0 && (
+                        <div className="text-center py-8 text-sm" style={{ color: "rgba(245,213,176,0.4)" }}>
+                          Фотографии будут добавлены
+                        </div>
+                      )}
+                      {data?.loaded && data.photos.length > 0 && (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                          {data.photos.map((photo, idx) => (
+                            <button
+                              key={photo.key}
+                              onClick={() => setLightbox({ photos: data.photos, index: idx })}
+                              className="aspect-square rounded-xl overflow-hidden hover:opacity-90 transition-opacity"
+                              style={{ border: "1px solid rgba(140,90,30,0.3)" }}
+                            >
+                              <img src={photo.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </section>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.92)" }} onClick={() => setLightbox(null)}>
+          <button className="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.1)" }} onClick={() => setLightbox(null)}>
+            <Icon name="X" size={20} style={{ color: "#fff" }} />
+          </button>
+          <button className="absolute left-4 w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.1)" }}
+            onClick={(e) => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, index: (prev.index - 1 + prev.photos.length) % prev.photos.length } : null) }}>
+            <Icon name="ChevronLeft" size={24} style={{ color: "#fff" }} />
+          </button>
+          <img
+            src={lightbox.photos[lightbox.index].url}
+            alt=""
+            className="max-h-[85vh] max-w-[85vw] rounded-xl object-contain"
+            onClick={e => e.stopPropagation()}
+          />
+          <button className="absolute right-4 w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "rgba(255,255,255,0.1)" }}
+            onClick={(e) => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, index: (prev.index + 1) % prev.photos.length } : null) }}>
+            <Icon name="ChevronRight" size={24} style={{ color: "#fff" }} />
+          </button>
+          <div className="absolute bottom-4 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+            {lightbox.index + 1} / {lightbox.photos.length}
+          </div>
+        </div>
+      )}
 
       {/* Program Section */}
       <section id="program" className="relative z-10 py-24 px-6">
