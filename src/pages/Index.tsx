@@ -13,6 +13,58 @@ const HERO_BG = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631
 const FESTIVAL_PHOTO_1 = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/4ba01c9d-0626-47c2-a91c-10bcb9cc6878.jpg"
 const FESTIVAL_PHOTO_2 = "https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/files/e5cb20ac-65ec-46c5-aa03-766700c05fd9.jpg"
 
+const historyEvents = [
+  {
+    year: "~1985",
+    title: "Рождение традиции",
+    desc: "Иван Афанасьевич Васильев заложил традицию проведения праздников фронтовой поэзии в д. Борки. Первые встречи поэтов у Борковского музея — ещё неформальные, по инициативе самого писателя.",
+    icon: "Feather",
+  },
+  {
+    year: "1991",
+    title: "Дом экологического просвещения",
+    desc: "5 июня 1991 года по инициативе И.А. Васильева в деревне Борки открыт Дом экологического просвещения при участии Великолукской ГСХА.",
+    icon: "Home",
+  },
+  {
+    year: "1994",
+    title: "Памяти основателя",
+    desc: "Год ухода Ивана Афанасьевича. Традиция праздника фронтовой поэзии продолжается — теперь как дань памяти писателю и всем защитникам Отечества.",
+    icon: "Heart",
+  },
+  {
+    year: "1996",
+    title: "Увековечение памяти",
+    desc: "21 июля 1996 года на здании музея установлена памятная доска И.А. Васильеву. На доме по проспекту Гагарина, 17 в Великих Луках открыта мемориальная доска.",
+    icon: "Star",
+  },
+  {
+    year: "2004",
+    title: "90 лет со дня рождения",
+    desc: "Районная библиотека получает имя И.А. Васильева. В администрации Великолукского района состоялся торжественный вечер памяти писателя.",
+    icon: "BookOpen",
+  },
+  {
+    year: "2015",
+    title: "Губернатор на фестивале",
+    desc: "Губернатор Андрей Турчак лично участвовал в фестивале и передал слова приветствия от ветеранов Риги. Ведущим по-прежнему остаётся Валентин Яковлевич Курбатов.",
+    icon: "Users",
+  },
+  {
+    year: "2022–2024",
+    title: "Всероссийский формат",
+    desc: "Фестиваль обретает статус Всероссийского. Приезжают поэты из Рязани, Москвы, Твери, Санкт-Петербурга, Пскова, Великих Лук, Беларуси. Тематика расширяется — добавляются стихи о СВО.",
+    icon: "MapPin",
+  },
+  {
+    year: "2026",
+    title: "Новая страница",
+    desc: "2–3 мая 2026 года — очередной фестиваль «А музы не молчат!». У Борковского музея вновь зазвучат фронтовые стихи и песни во славу защитников Отечества.",
+    icon: "Calendar",
+    highlight: true,
+  },
+]
+
 const galleryYears = [
   { year: "2022", photo: FESTIVAL_PHOTO_1, caption: "II Всероссийский фестиваль, 450 участников" },
   { year: "2023", photo: FESTIVAL_PHOTO_2, caption: "III фестиваль — поэты со всей России" },
@@ -66,6 +118,16 @@ const Index = () => {
           style={{ backgroundImage: `url(${HERO_BG})` }}
         >
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,10,10,0.55) 0%, rgba(26,10,10,0.85) 100%)" }} />
+        </div>
+
+        {/* Borki Photo Strip */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 md:h-64 overflow-hidden z-0">
+          <img
+            src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/c0f5b5d6-cafd-486b-ba60-ac0969cb3a8b.jpg"
+            alt="Борки"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,10,10,0.9) 0%, rgba(26,10,10,0.3) 60%, rgba(26,10,10,0.7) 100%)" }} />
         </div>
 
         {/* Navigation */}
@@ -134,7 +196,6 @@ const Index = () => {
             <Icon name="Calendar" size={24} style={{ color: "#d4a030" }} />
             <div className="text-left">
               <div className="text-2xl font-bold" style={{ color: "#f5e8c0" }}>2–3 мая 2026</div>
-              <div className="text-sm" style={{ color: "rgba(245,232,192,0.75)" }}>д. Борки, Великолукский район, Псковская область</div>
             </div>
           </div>
 
@@ -285,11 +346,10 @@ const Index = () => {
           </div>
 
           {/* Features row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {[
               { icon: "Users", label: "Участники со всей России", value: "500+" },
-              { icon: "BookOpen", label: "Лет истории фестиваля", value: "5+" },
-              { icon: "Star", label: "Номинации конкурса", value: "8" },
+              { icon: "BookOpen", label: "Лет истории фестиваля", value: "40+" },
               { icon: "Heart", label: "Вход для зрителей", value: "Бесплатно" },
             ].map((item) => (
               <div key={item.label} className="rounded-2xl p-6 text-center" style={{ background: "rgba(20,20,20,0.5)", border: "1px solid rgba(200,160,60,0.2)", backdropFilter: "blur(12px)" }}>
@@ -301,52 +361,65 @@ const Index = () => {
         </div>
       </section>
 
-      {/* History / Gallery Section */}
+      {/* History Timeline Section */}
       <section id="history" className="relative z-10 py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(16px)" }}>
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
-                История
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Фестиваль по годам</h2>
-              <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(245,213,176,0.75)" }}>
-                Каждый год собирает новых поэтов, новые голоса и новые страницы в историю фронтовой лирики
-              </p>
+        <div className="max-w-4xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+              История
             </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>История фестиваля</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(245,213,176,0.75)" }}>
+              Более 40 лет традиции фронтовой поэзии в д. Борки
+            </p>
+          </div>
 
-            {/* Year Tabs */}
-            <div className="flex justify-center gap-3 mb-10 flex-wrap">
-              {galleryYears.map((item) => (
-                <button
-                  key={item.year}
-                  onClick={() => setActiveYear(item.year)}
-                  className="px-6 py-2 rounded-full text-sm font-semibold transition-all"
-                  style={
-                    activeYear === item.year
-                      ? { background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }
-                      : { background: "rgba(30,30,30,0.5)", color: "rgba(240,223,160,0.65)", border: "1px solid rgba(200,160,60,0.25)" }
-                  }
-                >
-                  {item.year}
-                </button>
-              ))}
+          {/* Timeline Tree */}
+          <div className="relative">
+            {/* Central line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block" style={{ background: "linear-gradient(to bottom, transparent, rgba(200,160,32,0.5) 5%, rgba(200,160,32,0.5) 95%, transparent)" }} />
+
+            <div className="space-y-8">
+              {historyEvents.map((event, index) => {
+                const isLeft = index % 2 === 0
+                return (
+                  <div key={event.year} className={`relative flex items-center gap-6 md:gap-0 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                    {/* Card */}
+                    <div className={`w-full md:w-[calc(50%-2rem)] rounded-2xl p-6 ${isLeft ? "md:mr-8" : "md:ml-8"}`}
+                      style={{
+                        background: event.highlight ? "rgba(120,80,0,0.45)" : "rgba(80,20,20,0.35)",
+                        border: event.highlight ? "1px solid rgba(200,160,32,0.6)" : "1px solid rgba(160,57,74,0.25)",
+                        backdropFilter: "blur(12px)",
+                      }}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: event.highlight ? "rgba(200,160,32,0.3)" : "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+                          <Icon name={event.icon} size={18} style={{ color: event.highlight ? "#f5e8c0" : "#f5d5b0" }} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: event.highlight ? "#c8a020" : "rgba(200,160,32,0.7)" }}>{event.year}</div>
+                          <h3 className="text-base font-semibold mb-2" style={{ color: "#f5d5b0" }}>{event.title}</h3>
+                          <p className="text-sm leading-relaxed" style={{ color: "rgba(245,213,176,0.75)" }}>{event.desc}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Center dot */}
+                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full items-center justify-center z-10 flex-shrink-0"
+                      style={{
+                        background: event.highlight ? "#c8a020" : "rgba(122,31,46,0.8)",
+                        border: event.highlight ? "2px solid #f5e8c0" : "2px solid rgba(200,160,32,0.5)",
+                        boxShadow: event.highlight ? "0 0 12px rgba(200,160,32,0.5)" : "none",
+                      }}
+                    />
+
+                    {/* Spacer for opposite side */}
+                    <div className="hidden md:block w-[calc(50%-2rem)]" />
+                  </div>
+                )
+              })}
             </div>
-
-            {/* Gallery Image */}
-            {galleryYears.filter((g) => g.year === activeYear).map((g) => (
-              <div key={g.year} className="rounded-2xl overflow-hidden">
-                <img
-                  src={g.photo}
-                  alt={`Фестиваль ${g.year}`}
-                  className="w-full h-96 object-cover"
-                />
-                <div className="p-6 text-center" style={{ background: "rgba(80,20,20,0.4)" }}>
-                  <p className="text-lg font-medium" style={{ color: "#f5d5b0" }}>{g.caption}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
