@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Заявка — Победное Слово над Ловатью</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      color: #000;
+      background: #fff;
+      padding: 20px;
+    }
+
+    .page {
+      max-width: 180mm;
+      margin: 0 auto;
+      padding: 15mm 15mm;
+    }
+
+    .print-btn {
+      display: block;
+      margin: 0 auto 24px;
+      padding: 10px 32px;
+      background: #8B6010;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+    .print-btn:hover { background: #6a4a0c; }
+
+    h1.doc-title {
+      text-align: center;
+      font-size: 14pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    h2.doc-subtitle {
+      text-align: center;
+      font-size: 10pt;
+      font-weight: normal;
+      line-height: 1.5;
+      margin-bottom: 6px;
+    }
+
+    .contest-name {
+      text-align: center;
+      font-size: 12pt;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .field-row {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .field-num {
+      font-weight: bold;
+      flex-shrink: 0;
+      min-width: 18px;
+    }
+
+    .field-label {
+      flex-shrink: 0;
+    }
+
+    .field-line {
+      flex: 1;
+      border-bottom: 1px solid #000;
+      min-width: 60px;
+    }
+
+    .field-multiline {
+      margin-top: 4px;
+      border-bottom: 1px solid #000;
+      width: 100%;
+      height: 16px;
+    }
+
+    .field-block {
+      margin-bottom: 14px;
+    }
+
+    .field-block-label {
+      margin-bottom: 4px;
+    }
+
+    .text-area-lines {
+      margin-top: 6px;
+    }
+
+    .line {
+      border-bottom: 1px solid #000;
+      height: 18px;
+      margin-bottom: 4px;
+    }
+
+    .date-line {
+      margin-top: 20px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    /* Page break */
+    .page-break {
+      page-break-before: always;
+      padding-top: 10mm;
+    }
+
+    /* Consent section */
+    .consent-title {
+      text-align: center;
+      font-size: 14pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .consent-subtitle {
+      text-align: center;
+      font-size: 11pt;
+      margin-bottom: 16px;
+    }
+
+    .consent-text {
+      font-size: 11pt;
+      line-height: 1.7;
+      text-align: justify;
+      margin-bottom: 10px;
+    }
+
+    .consent-field {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 6px;
+      font-size: 11pt;
+    }
+
+    .consent-field .line-fill {
+      flex: 1;
+      border-bottom: 1px solid #000;
+    }
+
+    .consent-small {
+      font-size: 9pt;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .signature-block {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .sig-left {
+      flex: 1;
+      border-bottom: 1px solid #000;
+    }
+
+    .sig-center {
+      width: 120px;
+      text-align: center;
+    }
+
+    .sig-right {
+      flex: 0 0 80px;
+    }
+
+    .sig-label {
+      font-size: 8pt;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    ul.pd-list {
+      padding-left: 24px;
+      margin: 8px 0;
+      font-size: 11pt;
+      line-height: 1.7;
+    }
+
+    @media print {
+      .print-btn { display: none !important; }
+      body { padding: 0; }
+      .page { padding: 10mm 15mm; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨 Распечатать / Сохранить как PDF</button>
+
+<div class="page">
+
+  <!-- ЗАЯВКА -->
+  <h1 class="doc-title">ЗАЯВКА</h1>
+  <h2 class="doc-subtitle">
+    на участие в общероссийском конкурсе чтецов среди детей и юношества<br>
+    на лучшее исполнение стихотворений и прозы патриотической тематики современных авторов,<br>
+    посвящённого героическому прошлому и настоящему малых городов России,<br>
+    городов воинской славы и доблестным защитникам России всех времён
+  </h2>
+  <p class="contest-name">«Победное Слово над Ловатью»</p>
+
+  <div class="field-row">
+    <span class="field-num">1.</span>
+    <span class="field-label">ФИО участника конкурса</span>
+    <span class="field-line"></span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-num">2.</span>
+    <span class="field-label">Возраст участника конкурса</span>
+    <span class="field-line"></span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-num">3.</span>
+    <span class="field-label">Место жительства участника конкурса</span>
+    <span class="field-line"></span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-num">4.</span>
+    <span class="field-label">Учебное заведение</span>
+    <span class="field-line"></span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-num">5.</span>
+    <span class="field-label">Наставник участника конкурса</span>
+    <span class="field-line"></span>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-label">
+      <span class="field-num">6.</span>
+      Автор и название произведения, предоставленного на конкурс
+    </div>
+    <div class="field-multiline"></div>
+    <div class="field-multiline"></div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-label">
+      <span class="field-num">7.</span>
+      Контактный телефон (указывается телефон одного из родителей участника конкурса)
+    </div>
+    <div class="field-multiline"></div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-block-label">
+      <span class="field-num">8.</span>
+      Контактные данные для информирования о ходе конкурса (эл. почта)
+    </div>
+    <div class="field-multiline"></div>
+    <div class="field-multiline"></div>
+  </div>
+
+  <div class="field-row">
+    <span class="field-num">9.</span>
+    <span class="field-label">Согласие на размещение видеоролика в сети интернет (Да / Нет)</span>
+    <span class="field-line"></span>
+  </div>
+
+  <div class="field-block" style="margin-top: 10px;">
+    <div class="field-block-label">
+      <span class="field-num">10.</span>
+      Текст стихотворения (для авторов, участвующих в номинации «Авторское стихотворение»)
+    </div>
+    <div class="text-area-lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <div class="date-line">
+    <span>Дата заполнения заявки</span>
+    <span class="field-line" style="max-width: 120px;"></span>
+  </div>
+
+  <!-- СОГЛАСИЕ -->
+  <div class="page-break">
+    <h1 class="consent-title">СОГЛАСИЕ</h1>
+    <p class="consent-subtitle">на обработку персональных данных</p>
+
+    <div class="consent-field">
+      <span>Я,</span>
+      <span class="line-fill"></span>
+    </div>
+    <p class="consent-small">(фамилия, имя, отчество (последнее — при наличии))</p>
+
+    <div class="consent-field" style="margin-top: 10px;">
+      <span>Проживающий(ая) по адресу</span>
+      <span class="line-fill"></span>
+    </div>
+    <div class="consent-field">
+      <span class="line-fill"></span>
+    </div>
+
+    <div class="consent-field" style="margin-top: 4px;">
+      <span>документ, удостоверяющий личность: серия</span>
+      <span class="line-fill" style="max-width: 50px;"></span>
+      <span>№</span>
+      <span class="line-fill" style="max-width: 80px;"></span>
+    </div>
+    <div class="consent-field">
+      <span>выдан</span>
+      <span class="line-fill"></span>
+    </div>
+    <p class="consent-small">(кем и когда выдан)</p>
+
+    <div class="consent-field" style="margin-top: 10px;">
+      <span>являясь родителем (законным представителем)</span>
+      <span class="line-fill"></span>
+    </div>
+    <div class="consent-field">
+      <span class="line-fill"></span>
+    </div>
+    <p class="consent-small">(указываются данные несовершеннолетнего участника конкурса)</p>
+
+    <p class="consent-text" style="margin-top: 12px;">
+      в соответствии с требованиями статьи 9 Федерального закона от 27 июля 2006 г. № 152-ФЗ «О персональных данных», свободно, своей волей и в своём интересе даю согласие Оргкомитету Всероссийского конкурса чтецов «Победное Слово над Ловатью» на обработку (любое действие (операцию) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение) следующих персональных данных:
+    </p>
+
+    <ul class="pd-list">
+      <li>фамилия, имя, отчество (последнее – при наличии);</li>
+      <li>документ, удостоверяющий личность (серия, номер, кем и когда выдан);</li>
+      <li>страховой номер индивидуального лицевого счёта (при наличии);</li>
+      <li>идентификационный номер налогоплательщика (при наличии);</li>
+      <li>адрес регистрации и фактического проживания;</li>
+      <li>адрес электронной почты, в случае отсутствия — почтовый адрес;</li>
+      <li>номер контактного телефона (при наличии).</li>
+    </ul>
+
+    <p class="consent-text">
+      Вышеуказанные персональные данные предоставляю для обработки в целях осуществления возврата ошибочно уплаченных (взысканных) платежей.
+    </p>
+    <p class="consent-text">
+      Настоящее согласие действует на период до истечения сроков хранения соответствующей информации или документов, содержащих указанную информацию, определяемых в соответствии с законодательством Российской Федерации.
+    </p>
+    <p class="consent-text">
+      Отзыв согласия осуществляется в соответствии с законодательством Российской Федерации.
+    </p>
+
+    <div class="signature-block">
+      <div style="flex:1;">
+        <div class="sig-left"></div>
+        <p class="sig-label">(фамилия, имя, отчество (последнее — при наличии))</p>
+      </div>
+      <div style="width: 32px;"></div>
+      <div style="flex: 0 0 140px; text-align: center;">
+        <div style="border-bottom: 1px solid #000; height: 18px; margin-bottom: 2px;">«___» ___________ 20___ г.</div>
+      </div>
+    </div>
+
+    <div style="text-align: right; margin-top: 24px;">
+      <div style="display: inline-block; min-width: 160px; border-bottom: 1px solid #000; height: 18px;"></div>
+      <p class="sig-label">(подпись)</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

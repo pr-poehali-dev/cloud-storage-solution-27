@@ -701,10 +701,17 @@ const Index = () => {
                 )}
 
                 {/* CTA */}
-                <div className="mt-10 text-center">
+                <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <a href="/application-form.html" target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="rounded-full px-8 font-semibold gap-2" style={{ background: "rgba(60,35,10,0.7)", color: "#f5e8c0", border: "1px solid rgba(200,160,40,0.55)" }}>
+                      <Icon name="FileDown" size={18} />
+                      Скачать бланк заявки
+                    </Button>
+                  </a>
                   <a href="mailto:swetslova.ru@yandex.ru">
-                    <Button size="lg" className="rounded-full px-10 font-semibold" style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}>
-                      Подать заявку на конкурс
+                    <Button size="lg" className="rounded-full px-8 font-semibold gap-2" style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}>
+                      <Icon name="Mail" size={18} />
+                      Отправить заявку
                     </Button>
                   </a>
                 </div>
