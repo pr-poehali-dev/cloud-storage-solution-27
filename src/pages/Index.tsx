@@ -171,7 +171,7 @@ const Index = () => {
               <Icon name="Award" size={16} style={{ color: "#c8a020" }} />
             </div>
             <div className="text-left flex-1">
-              <div className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: "#c8a020" }}>Конкурс чтецов</div>
+              <div className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: "#c8a020" }}>Конкурс чтецов среди детей и юношества</div>
               <div className="text-sm font-semibold leading-snug" style={{ color: "#f5e8c0" }}>«Победное Слово над Ловатью»</div>
             </div>
             <Icon name="ChevronRight" size={16} style={{ color: "rgba(200,160,40,0.7)" }} />
