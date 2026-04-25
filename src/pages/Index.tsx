@@ -163,11 +163,6 @@ const Index = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 text-center">
-          {/* Badge */}
-          <div className="mb-6 px-5 py-2 rounded-full text-sm font-medium" style={{ background: "rgba(80,40,0,0.65)", border: "1px solid rgba(200,140,40,0.5)", backdropFilter: "blur(12px)", color: "#f5d5b0" }}>
-            🌟 Всероссийский фестиваль фронтовой поэзии
-          </div>
-
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-4 text-balance" style={{ color: "#f5e8c0" }}>
             «А музы не молчат!»
@@ -229,9 +224,18 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
 
           {/* Festival Description */}
-          <div className="rounded-3xl p-10 md:p-14 mb-16" style={{ background: "rgba(80,20,20,0.25)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(12px)" }}>
-            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+          <div className="rounded-3xl p-10 md:p-14 mb-16" style={{ background: "rgba(60,35,10,0.25)", border: "1px solid rgba(140,90,30,0.2)", backdropFilter: "blur(12px)" }}>
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
               О фестивале
+            </div>
+            {/* Photo before text */}
+            <div className="rounded-2xl overflow-hidden mb-8">
+              <img
+                src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/5df20fa7-b5fa-4db8-9f94-9552456b34a0.jpg"
+                alt="Фестиваль в Борках"
+                className="w-full object-cover"
+                style={{ maxHeight: "480px", objectPosition: "center" }}
+              />
             </div>
             <div className="space-y-5 text-base leading-relaxed" style={{ color: "rgba(245,213,176,0.85)" }}>
               <p>Здесь спокойствие и умиротворение. Здесь пение птиц и шум сосен. В этом тихом уголке с таким мирным названием Борки, до сих пор хранящем память о писателе, лауреате Ленинской и Государственной премии Иване Афанасьевиче Васильеве, ежегодно, традиционно в начале мая, накануне великого Дня Победы, у Борковского музея звучат фронтовые стихи и песни.</p>
@@ -245,7 +249,7 @@ const Index = () => {
           </div>
 
           {/* Vasiliev Portrait + Bio */}
-          <div className="rounded-3xl overflow-hidden mb-16" style={{ background: "rgba(80,20,20,0.25)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(12px)" }}>
+          <div className="rounded-3xl overflow-hidden mb-16" style={{ background: "rgba(60,35,10,0.25)", border: "1px solid rgba(140,90,30,0.2)", backdropFilter: "blur(12px)" }}>
             <div className="grid grid-cols-1 md:grid-cols-3">
               <div className="md:col-span-1">
                 <img
@@ -256,7 +260,7 @@ const Index = () => {
                 />
               </div>
               <div className="md:col-span-2 p-10 md:p-12 flex flex-col justify-center space-y-5" style={{ color: "rgba(245,213,176,0.85)" }}>
-                <div className="inline-block px-4 py-2 rounded-full text-sm font-medium self-start mb-2" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+                <div className="inline-block px-4 py-2 rounded-full text-sm font-medium self-start mb-2" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
                   Иван Афанасьевич Васильев
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold" style={{ color: "#f5d5b0" }}>Писатель, фронтовик, лауреат Ленинской и Государственной премий</h3>
@@ -266,14 +270,14 @@ const Index = () => {
               </div>
             </div>
             {/* Second Vasiliev photo */}
-            <div className="border-t" style={{ borderColor: "rgba(160,57,74,0.2)" }}>
+            <div className="border-t" style={{ borderColor: "rgba(140,90,30,0.2)" }}>
               <img
                 src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/13206ea1-d69c-4a84-8468-a9b6c3630ccd.jpg"
                 alt="И.А. Васильев в музее"
                 className="w-full object-cover"
                 style={{ maxHeight: "420px", objectPosition: "top" }}
               />
-              <div className="px-8 py-4 text-center" style={{ background: "rgba(80,20,20,0.5)" }}>
+              <div className="px-8 py-4 text-center" style={{ background: "rgba(60,35,10,0.5)" }}>
                 <p className="text-sm italic" style={{ color: "rgba(245,213,176,0.8)" }}>И.А. Васильев в литературно-художественном музее, д. Борки</p>
               </div>
             </div>
@@ -281,7 +285,7 @@ const Index = () => {
 
           {/* Organizers Header */}
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
               О фестивале
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Организаторы фестиваля</h2>
@@ -292,8 +296,8 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             {/* Organizer 1 */}
-            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(12px)" }}>
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(60,35,10,0.35)", border: "1px solid rgba(140,90,30,0.25)", backdropFilter: "blur(12px)" }}>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(100,60,10,0.5)", border: "1px solid rgba(140,90,30,0.4)" }}>
                 <Icon name="Star" size={24} style={{ color: "#f5d5b0" }} />
               </div>
               <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>АНО «Центр творчества и досуга «РАДУГА»</h3>
@@ -303,8 +307,8 @@ const Index = () => {
             </div>
 
             {/* Organizer 2 */}
-            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(12px)" }}>
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(60,35,10,0.35)", border: "1px solid rgba(140,90,30,0.25)", backdropFilter: "blur(12px)" }}>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(100,60,10,0.5)", border: "1px solid rgba(140,90,30,0.4)" }}>
                 <Icon name="BookOpen" size={24} style={{ color: "#f5d5b0" }} />
               </div>
               <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>Литературно-художественный музей им. И.А. Васильева</h3>
@@ -314,8 +318,8 @@ const Index = () => {
             </div>
 
             {/* Organizer 3 */}
-            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(12px)" }}>
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+            <div className="rounded-2xl p-8 text-center" style={{ background: "rgba(60,35,10,0.35)", border: "1px solid rgba(140,90,30,0.25)", backdropFilter: "blur(12px)" }}>
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-6" style={{ background: "rgba(100,60,10,0.5)", border: "1px solid rgba(140,90,30,0.4)" }}>
                 <Icon name="MapPin" size={24} style={{ color: "#f5d5b0" }} />
               </div>
               <h3 className="text-lg font-semibold mb-3" style={{ color: "#f5d5b0" }}>Культурно-информационный центр Великолукского района</h3>
@@ -346,7 +350,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
               История
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>История фестиваля</h2>
@@ -368,13 +372,13 @@ const Index = () => {
                     {/* Card */}
                     <div className={`w-full md:w-[calc(50%-2rem)] rounded-2xl p-6 ${isLeft ? "md:mr-8" : "md:ml-8"}`}
                       style={{
-                        background: event.highlight ? "rgba(120,80,0,0.45)" : "rgba(80,20,20,0.35)",
-                        border: event.highlight ? "1px solid rgba(200,160,32,0.6)" : "1px solid rgba(160,57,74,0.25)",
+                        background: event.highlight ? "rgba(120,80,0,0.45)" : "rgba(60,35,10,0.35)",
+                        border: event.highlight ? "1px solid rgba(200,160,32,0.6)" : "1px solid rgba(140,90,30,0.25)",
                         backdropFilter: "blur(12px)",
                       }}
                     >
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: event.highlight ? "rgba(200,160,32,0.3)" : "rgba(122,31,46,0.5)", border: "1px solid rgba(160,57,74,0.4)" }}>
+                        <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: event.highlight ? "rgba(200,160,32,0.3)" : "rgba(100,60,10,0.5)", border: "1px solid rgba(140,90,30,0.4)" }}>
                           <Icon name={event.icon} size={18} style={{ color: event.highlight ? "#f5e8c0" : "#f5d5b0" }} />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -388,7 +392,7 @@ const Index = () => {
                     {/* Center dot */}
                     <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full items-center justify-center z-10 flex-shrink-0"
                       style={{
-                        background: event.highlight ? "#c8a020" : "rgba(122,31,46,0.8)",
+                        background: event.highlight ? "#c8a020" : "rgba(100,60,10,0.8)",
                         border: event.highlight ? "2px solid #f5e8c0" : "2px solid rgba(200,160,32,0.5)",
                         boxShadow: event.highlight ? "0 0 12px rgba(200,160,32,0.5)" : "none",
                       }}
@@ -409,7 +413,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
               Программа
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Два дня поэзии и памяти</h2>
@@ -419,7 +423,7 @@ const Index = () => {
           </div>
 
           {/* Day 1 */}
-          <div className="rounded-3xl overflow-hidden mb-8" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)" }}>
+          <div className="rounded-3xl overflow-hidden mb-8" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(140,90,30,0.2)" }}>
             <div className="px-8 py-5 flex items-center gap-4" style={{ background: "rgba(80,40,0,0.5)", borderBottom: "1px solid rgba(200,160,32,0.25)" }}>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(200,160,32,0.2)", border: "1px solid rgba(200,160,32,0.4)" }}>
                 <Icon name="Calendar" size={18} style={{ color: "#c8a020" }} />
@@ -429,7 +433,7 @@ const Index = () => {
                 <div className="text-xl font-bold" style={{ color: "#f5e8c0" }}>2 мая — Великие Луки</div>
               </div>
             </div>
-            <div className="divide-y" style={{ borderColor: "rgba(160,57,74,0.15)" }}>
+            <div className="divide-y" style={{ borderColor: "rgba(140,90,30,0.15)" }}>
               {[
                 { time: "8:00", text: "Встреча гостей праздника на ж.д. вокзале г. Великие Луки" },
                 { time: "8:30–9:00", text: "Завтрак гостей (гостиница «Юбилейная», пл. Ленина, д. 2)" },
@@ -452,8 +456,8 @@ const Index = () => {
           </div>
 
           {/* Day 2 */}
-          <div className="rounded-3xl overflow-hidden mb-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)" }}>
-            <div className="px-8 py-5 flex items-center gap-4" style={{ background: "rgba(80,20,20,0.6)", borderBottom: "1px solid rgba(200,160,32,0.25)" }}>
+          <div className="rounded-3xl overflow-hidden mb-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(140,90,30,0.2)" }}>
+            <div className="px-8 py-5 flex items-center gap-4" style={{ background: "rgba(60,35,10,0.6)", borderBottom: "1px solid rgba(200,160,32,0.25)" }}>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(200,160,32,0.2)", border: "1px solid rgba(200,160,32,0.4)" }}>
                 <Icon name="Star" size={18} style={{ color: "#c8a020" }} />
               </div>
@@ -462,7 +466,7 @@ const Index = () => {
                 <div className="text-xl font-bold" style={{ color: "#f5e8c0" }}>3 мая — д. Борки Великолукского района</div>
               </div>
             </div>
-            <div className="divide-y" style={{ borderColor: "rgba(160,57,74,0.15)" }}>
+            <div className="divide-y" style={{ borderColor: "rgba(140,90,30,0.15)" }}>
               {[
                 { time: "8:30–8:50", text: "Завтрак гостей" },
                 { time: "8:50–10:00", text: "Краткая экскурсия по музею им. Васильева" },
@@ -499,11 +503,11 @@ const Index = () => {
       {/* FAQ Section */}
       <section id="faq" className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(16px)" }}>
+          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(140,90,30,0.2)", backdropFilter: "blur(16px)" }}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               {/* Left Column */}
               <div>
-                <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+                <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
                   Вопросы и ответы
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "#f5d5b0" }}>
@@ -520,7 +524,7 @@ const Index = () => {
                   <div
                     key={index}
                     className="rounded-2xl overflow-hidden"
-                    style={{ background: "rgba(80,20,20,0.35)", border: "1px solid rgba(160,57,74,0.25)" }}
+                    style={{ background: "rgba(60,35,10,0.35)", border: "1px solid rgba(140,90,30,0.25)" }}
                   >
                     <button
                       onClick={() => toggleFaq(index)}
@@ -528,9 +532,9 @@ const Index = () => {
                     >
                       <h3 className="text-base font-semibold pr-4" style={{ color: "#f5d5b0" }}>{faq.question}</h3>
                       {openFaq === index ? (
-                        <Minus className="w-5 h-5 flex-shrink-0" style={{ color: "#c0504a" }} />
+                        <Minus className="w-5 h-5 flex-shrink-0" style={{ color: "#a06820" }} />
                       ) : (
-                        <Plus className="w-5 h-5 flex-shrink-0" style={{ color: "#c0504a" }} />
+                        <Plus className="w-5 h-5 flex-shrink-0" style={{ color: "#a06820" }} />
                       )}
                     </button>
                     {openFaq === index && (
@@ -549,10 +553,10 @@ const Index = () => {
       {/* Contact Section */}
       <section id="contacts" className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl p-12" style={{ background: "rgba(80,20,20,0.3)", border: "1px solid rgba(160,57,74,0.25)", backdropFilter: "blur(16px)" }}>
+          <div className="rounded-3xl p-12" style={{ background: "rgba(60,35,10,0.3)", border: "1px solid rgba(140,90,30,0.25)", backdropFilter: "blur(16px)" }}>
             {/* Section Header */}
             <div className="text-center mb-16">
-              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(122,31,46,0.4)", border: "1px solid rgba(160,57,74,0.4)", color: "#f5d5b0" }}>
+              <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(100,60,10,0.4)", border: "1px solid rgba(140,90,30,0.4)", color: "#f5d5b0" }}>
                 Контакты
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "#f5d5b0" }}>Свяжитесь с нами</h2>
@@ -571,7 +575,7 @@ const Index = () => {
                     <input
                       type="text"
                       className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
-                      style={{ borderColor: "#c0504a", focusRingColor: "#7a1f2e" }}
+                      style={{ borderColor: "#a06820", focusRingColor: "#7a1f2e" }}
                       placeholder="Ваше полное имя"
                     />
                   </div>
@@ -580,7 +584,7 @@ const Index = () => {
                     <input
                       type="email"
                       className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
-                      style={{ borderColor: "#c0504a" }}
+                      style={{ borderColor: "#a06820" }}
                       placeholder="your@email.ru"
                     />
                   </div>
@@ -589,7 +593,7 @@ const Index = () => {
                     <input
                       type="text"
                       className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none"
-                      style={{ borderColor: "#c0504a" }}
+                      style={{ borderColor: "#a06820" }}
                       placeholder="Откуда вы?"
                     />
                   </div>
@@ -598,7 +602,7 @@ const Index = () => {
                     <textarea
                       rows={4}
                       className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none resize-none"
-                      style={{ borderColor: "#c0504a" }}
+                      style={{ borderColor: "#a06820" }}
                       placeholder="Прикрепите текст или задайте вопрос..."
                     />
                   </div>
@@ -645,7 +649,7 @@ const Index = () => {
                       value: "+7-911-887-98-11",
                     },
                   ].map((item) => (
-                    <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: "rgba(80,20,20,0.4)", border: "1px solid rgba(160,57,74,0.25)" }}>
+                    <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: "rgba(60,35,10,0.4)", border: "1px solid rgba(140,90,30,0.25)" }}>
                       <Icon name={item.icon} size={20} style={{ color: "#c8a020", marginTop: 2, flexShrink: 0 }} />
                       <div>
                         <div className="text-xs font-medium mb-0.5" style={{ color: "rgba(245,213,176,0.55)" }}>{item.label}</div>
@@ -663,7 +667,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="relative z-10 py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(160,57,74,0.15)", backdropFilter: "blur(16px)" }}>
+          <div className="rounded-3xl p-12" style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(140,90,30,0.15)", backdropFilter: "blur(16px)" }}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
               {/* Brand */}
               <div className="lg:col-span-2">
@@ -724,7 +728,7 @@ const Index = () => {
             </div>
 
             {/* Divider & Copyright */}
-            <div className="pt-8" style={{ borderTop: "1px solid rgba(160,57,74,0.2)" }}>
+            <div className="pt-8" style={{ borderTop: "1px solid rgba(140,90,30,0.2)" }}>
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p className="text-sm" style={{ color: "rgba(245,213,176,0.45)" }}>
                   © 2026 Фестиваль «А музы не молчат!» · Псковская область
