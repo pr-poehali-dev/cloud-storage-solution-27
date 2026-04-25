@@ -219,6 +219,13 @@ const Index = () => {
             <span>Вход для зрителей — свободный</span>
           </div>
         </div>
+
+        {/* Photo Caption */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+          <p className="text-xs italic px-3 py-1 rounded-full" style={{ color: "rgba(245,213,176,0.55)", background: "rgba(0,0,0,0.3)" }}>
+            Литературно-художественный музей им. И.А. Васильева, д. Борки
+          </p>
+        </div>
       </div>
 
       {/* Features / About Section */}
