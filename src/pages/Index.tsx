@@ -146,7 +146,7 @@ const Index = () => {
   ]
 
   return (
-    <div className="min-h-screen text-white" style={{ backgroundColor: "#0f0f0f" }}>
+    <div className="min-h-screen text-white" style={{ backgroundColor: "#f5ead6" }}>
       {/* Hero Section */}
       <div className="relative min-h-screen">
         {/* Background Image with Overlay */}
@@ -160,12 +160,7 @@ const Index = () => {
         {/* Navigation */}
         <nav className="relative z-10 flex items-center justify-between p-6">
           {/* Logo */}
-          <div className="flex items-center gap-3 px-3 py-2 rounded-full" style={{ background: "rgba(255,255,255,0.92)", border: "1px solid rgba(160,100,40,0.4)", backdropFilter: "blur(12px)" }}>
-            <img src={LOGO} alt="Логотип фестиваля" className="w-12 h-12 object-contain" />
-            <span className="font-semibold text-sm leading-tight max-w-[160px]" style={{ color: "#4a2800" }}>
-              «А музы не молчат!»
-            </span>
-          </div>
+          <img src={LOGO} alt="Логотип фестиваля" className="w-20 h-20 object-contain drop-shadow-lg" />
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-1">
