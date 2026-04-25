@@ -213,11 +213,7 @@ const Index = () => {
             </Button>
           </div>
 
-          {/* Footer Note */}
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full text-sm" style={{ background: "rgba(30,30,30,0.65)", border: "1px solid rgba(200,160,60,0.35)", backdropFilter: "blur(12px)", color: "rgba(240,223,160,0.85)" }}>
-            <Icon name="Heart" size={16} style={{ color: "#c8a020" }} />
-            <span>Вход для зрителей — свободный</span>
-          </div>
+
         </div>
 
         {/* Photo Caption */}
