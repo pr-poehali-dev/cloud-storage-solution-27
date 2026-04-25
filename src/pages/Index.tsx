@@ -115,19 +115,9 @@ const Index = () => {
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${HERO_BG})` }}
+          style={{ backgroundImage: `url(https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/c0f5b5d6-cafd-486b-ba60-ac0969cb3a8b.jpg)` }}
         >
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,10,10,0.55) 0%, rgba(26,10,10,0.85) 100%)" }} />
-        </div>
-
-        {/* Borki Photo Strip */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 md:h-64 overflow-hidden z-0">
-          <img
-            src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/c0f5b5d6-cafd-486b-ba60-ac0969cb3a8b.jpg"
-            alt="Борки"
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,10,10,0.9) 0%, rgba(26,10,10,0.3) 60%, rgba(26,10,10,0.7) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,10,10,0.45) 0%, rgba(26,10,10,0.75) 70%, rgba(26,10,10,0.95) 100%)" }} />
         </div>
 
         {/* Navigation */}
@@ -234,19 +224,6 @@ const Index = () => {
       {/* Features / About Section */}
       <section id="about" className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
-
-          {/* Borki Photo */}
-          <div className="rounded-3xl overflow-hidden mb-16 shadow-2xl">
-            <img
-              src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/c0f5b5d6-cafd-486b-ba60-ac0969cb3a8b.jpg"
-              alt="Борки — Литературно-художественный музей им. И.А. Васильева"
-              className="w-full object-cover"
-              style={{ maxHeight: "520px" }}
-            />
-            <div className="px-8 py-4 text-center" style={{ background: "rgba(80,20,20,0.5)" }}>
-              <p className="text-sm italic" style={{ color: "rgba(245,213,176,0.8)" }}>Литературно-художественный музей им. И.А. Васильева, д. Борки</p>
-            </div>
-          </div>
 
           {/* Festival Description */}
           <div className="rounded-3xl p-10 md:p-14 mb-16" style={{ background: "rgba(80,20,20,0.25)", border: "1px solid rgba(160,57,74,0.2)", backdropFilter: "blur(12px)" }}>
