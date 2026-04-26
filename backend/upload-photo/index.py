@@ -47,7 +47,12 @@ def handler(event: dict, context) -> dict:
             key = f"{album}/{file_id}.{ext}"
             print(f"[upload] album={album!r} key={key!r} size={len(data)} mime={f.get('mime')}")
             s3.put_object(Bucket=BUCKET, Key=key, Body=data, ContentType=f.get('mime', 'image/jpeg'))
-            print(f"[upload] OK: {key}")
+            # verify file exists
+            head = s3.head_object(Bucket=BUCKET, Key=key)
+            print(f"[upload] OK: {key} verified_size={head['ContentLength']}")
+            # list bucket root to confirm
+            ls = s3.list_objects_v2(Bucket=BUCKET, MaxKeys=5)
+            print(f"[upload] bucket contents: {[o['Key'] for o in ls.get('Contents', [])]}")
             uploaded.append({'key': key, 'url': f"{cdn_base}/{key}"})
         except Exception as e:
             print(f"[upload] ERROR: {e}")

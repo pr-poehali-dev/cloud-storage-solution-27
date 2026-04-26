@@ -47,6 +47,7 @@ def handler(event: dict, context) -> dict:
     photos = []
     folders_set = set()
     for page in paginator.paginate(Bucket=BUCKET, Prefix=prefix, Delimiter='/'):
+        print(f"[list] page keys={[o['Key'] for o in page.get('Contents', [])]} prefixes={page.get('CommonPrefixes', [])}")
         for cp in page.get('CommonPrefixes', []):
             folders_set.add(cp['Prefix'])
         for obj in page.get('Contents', []):
