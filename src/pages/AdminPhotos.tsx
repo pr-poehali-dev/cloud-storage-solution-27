@@ -74,38 +74,26 @@ export default function AdminPhotos() {
     if (!pending.length) return
     setUploading(true)
 
-    const CHUNK = 5
-    for (let i = 0; i < pending.length; i += CHUNK) {
-      const chunk = pending.slice(i, i + CHUNK)
-      setFiles(prev => prev.map(f =>
-        chunk.find(c => c.file === f.file) ? { ...f, status: "uploading" } : f
-      ))
-      const payload = await Promise.all(chunk.map(async item => ({
-        name: item.file.name,
-        data: await toBase64(item.file),
-        ext: item.file.name.split(".").pop() || "jpg",
-        mime: item.file.type || "image/jpeg",
-      })))
+    for (const item of pending) {
+      setFiles(prev => prev.map(f => f.file === item.file ? { ...f, status: "uploading" } : f))
       try {
+        const data = await toBase64(item.file)
         const res = await fetch(UPLOAD_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ album, files: payload }),
+          body: JSON.stringify({ album, files: [{ name: item.file.name, data, ext: item.file.name.split(".").pop() || "jpg", mime: item.file.type || "image/jpeg" }] }),
         })
-        const data = await res.json()
+        const json = await res.json()
+        const uploaded = json.uploaded?.[0]
+        const err = json.errors?.[0]
         setFiles(prev => prev.map(f => {
-          const idx = chunk.findIndex(c => c.file === f.file)
-          if (idx === -1) return f
-          const uploaded = data.uploaded?.[idx]
-          const err = data.errors?.find((e: { name: string }) => e.name === f.file.name)
+          if (f.file !== item.file) return f
           if (err) return { ...f, status: "error", error: err.error }
           return { ...f, status: "done", url: uploaded?.url }
         }))
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e)
-        setFiles(prev => prev.map(f =>
-          chunk.find(c => c.file === f.file) ? { ...f, status: "error", error: msg } : f
-        ))
+        setFiles(prev => prev.map(f => f.file === item.file ? { ...f, status: "error", error: msg } : f))
       }
     }
     setUploading(false)
