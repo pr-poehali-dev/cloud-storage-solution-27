@@ -2,7 +2,7 @@ import json
 import os
 import boto3
 
-BUCKET = 'files'
+BUCKET = 'bucket'
 
 def handler(event: dict, context) -> dict:
     """Возвращает список фото из указанной папки S3-хранилища."""
@@ -20,7 +20,7 @@ def handler(event: dict, context) -> dict:
     )
 
     access_key = os.environ['AWS_ACCESS_KEY_ID']
-    cdn_base = f"https://cdn.poehali.dev/projects/{access_key}/files"
+    cdn_base = f"https://cdn.poehali.dev/projects/{access_key}/bucket"
     print(f"[list] access_key={access_key[:8]}... prefix={prefix!r}")
     image_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
 
