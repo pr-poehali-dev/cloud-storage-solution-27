@@ -4,7 +4,7 @@ import base64
 import uuid
 import boto3
 
-BUCKET = 'bucket'
+BUCKET = 'files'
 CDN_BASE_TPL = "https://cdn.poehali.dev/projects/{key}/bucket"
 
 TRANSLIT = {
