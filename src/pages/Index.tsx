@@ -216,7 +216,7 @@ const Index = () => {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 text-center">
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 pt-20 text-center">
           {/* Contest Badge */}
           <a href="#contest" className="group mb-6 flex items-center gap-3 px-6 py-3 rounded-2xl w-full max-w-xl transition-opacity hover:opacity-90" style={{ background: "rgba(60,35,10,0.7)", border: "1px solid rgba(200,160,40,0.55)", backdropFilter: "blur(12px)" }}>
             <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "rgba(200,160,32,0.25)", border: "1px solid rgba(200,160,32,0.4)" }}>
