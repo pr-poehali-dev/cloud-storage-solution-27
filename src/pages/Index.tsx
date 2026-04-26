@@ -206,7 +206,10 @@ const Index = () => {
           boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.4)" : "none",
         }}
       >
-        <img src={LOGO} alt="Логотип фестиваля" className="w-14 h-14 object-contain drop-shadow-lg" />
+        <div className="flex items-center gap-3">
+          <img src={LOGO} alt="Логотип фестиваля" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-14 h-14 object-contain drop-shadow-lg" />
+        </div>
 
         <div
           className="hidden md:flex items-center gap-0.5 rounded-full px-2 py-1.5 transition-all duration-300"
@@ -1113,7 +1116,8 @@ const Index = () => {
                       icon: "MapPin",
                       label: "Место проведения",
                       value: "Литературно-художественный музей имени писателя И.А. Васильева, д. Борки",
-                      href: "https://museum-borki.edusite.ru",
+                      href: "https://yandex.ru/maps/?text=Литературно-художественный+музей+Борки+Псковская+область",
+                      mapLink: true,
                     },
                     {
                       icon: "Calendar",
@@ -1145,7 +1149,15 @@ const Index = () => {
                       <div>
                         <div className="text-xs font-medium mb-0.5" style={{ color: "#8a6030" }}>{item.label}</div>
                         {item.href ? (
-                          <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium underline decoration-dotted hover:opacity-70 transition-opacity" style={{ color: "#3a1f00" }}>{item.value}</a>
+                          <div className="flex items-center gap-2">
+                            <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium underline decoration-dotted hover:opacity-70 transition-opacity" style={{ color: "#3a1f00" }}>{item.value}</a>
+                            {(item as {mapLink?: boolean}).mapLink && (
+                              <a href={item.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-medium transition-opacity hover:opacity-80 flex-shrink-0" style={{ background: "rgba(200,160,32,0.25)", color: "#7a4e00", border: "1px solid rgba(140,90,30,0.4)" }}>
+                                <Icon name="Map" size={11} />
+                                на карте
+                              </a>
+                            )}
+                          </div>
                         ) : (
                           <div className="text-sm font-medium" style={{ color: "#3a1f00" }}>{item.value}</div>
                         )}
