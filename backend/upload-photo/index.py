@@ -4,8 +4,8 @@ import base64
 import uuid
 import boto3
 
-BUCKET = 'bucket'
-CDN_BASE_TPL = "https://cdn.poehali.dev/projects/{key}/bucket"
+BUCKET = 'files'
+CDN_BASE_TPL = "https://cdn.poehali.dev/projects/{key}/files"
 
 def handler(event: dict, context) -> dict:
     """Загружает фото в указанный альбом (папку) S3-хранилища."""
