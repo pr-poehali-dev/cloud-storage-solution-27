@@ -90,6 +90,13 @@ const Index = () => {
   const [activeAlbum, setActiveAlbum] = useState<string | null>(null)
   const [albumCache, setAlbumCache] = useState<Record<string, AlbumData>>({})
   const [lightbox, setLightbox] = useState<{ photos: Photo[]; index: number } | null>(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const loadAlbum = useCallback(async (albumId: string) => {
     const album = ALBUMS.find(a => a.id === albumId)
@@ -145,8 +152,59 @@ const Index = () => {
     },
   ]
 
+  const navLinks = [
+    { label: "О фестивале", href: "#about" },
+    { label: "История", href: "#history" },
+    { label: "Программа", href: "#program" },
+    { label: "Конкурс", href: "#contest" },
+    { label: "Вопросы", href: "#faq" },
+    { label: "Контакты", href: "#contacts" },
+  ]
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#f5ead6", color: "#2a1000" }}>
+
+      {/* Fixed Navigation */}
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300"
+        style={{
+          background: scrolled ? "rgba(10,5,5,0.85)" : "transparent",
+          backdropFilter: scrolled ? "blur(20px)" : "none",
+          borderBottom: scrolled ? "1px solid rgba(200,160,60,0.2)" : "none",
+          boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.4)" : "none",
+        }}
+      >
+        <img src={LOGO} alt="Логотип фестиваля" className="w-14 h-14 object-contain drop-shadow-lg" />
+
+        <div
+          className="hidden md:flex items-center gap-0.5 rounded-full px-2 py-1.5 transition-all duration-300"
+          style={{
+            background: scrolled ? "transparent" : "rgba(10,5,5,0.55)",
+            backdropFilter: scrolled ? "none" : "blur(20px)",
+            border: scrolled ? "none" : "1px solid rgba(200,160,60,0.25)",
+            boxShadow: scrolled ? "none" : "0 2px 24px rgba(0,0,0,0.35)",
+          }}
+        >
+          {navLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-white/10"
+              style={{ color: "rgba(240,223,160,0.9)", letterSpacing: "0.01em" }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        <Button
+          className="rounded-full px-6 font-semibold shadow-lg"
+          style={{ background: "linear-gradient(135deg, #d4a820, #c8a020)", color: "#1a0a00", border: "1px solid rgba(240,200,60,0.6)", boxShadow: "0 2px 12px rgba(200,160,32,0.4)" }}
+        >
+          Подать заявку
+        </Button>
+      </nav>
+
       {/* Hero Section */}
       <div className="relative min-h-screen">
         {/* Background Image with Overlay */}
@@ -156,43 +214,6 @@ const Index = () => {
         >
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(26,10,10,0.45) 0%, rgba(26,10,10,0.75) 70%, rgba(26,10,10,0.95) 100%)" }} />
         </div>
-
-        {/* Navigation */}
-        <nav className="relative z-10 flex items-center justify-between px-6 py-4">
-          {/* Logo */}
-          <img src={LOGO} alt="Логотип фестиваля" className="w-16 h-16 object-contain drop-shadow-lg" />
-
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-0.5 rounded-full px-2 py-1.5" style={{ background: "rgba(10,5,5,0.55)", backdropFilter: "blur(20px)", border: "1px solid rgba(200,160,60,0.25)", boxShadow: "0 2px 24px rgba(0,0,0,0.35)" }}>
-            {[
-              { label: "О фестивале", href: "#about" },
-              { label: "История", href: "#history" },
-              { label: "Программа", href: "#program" },
-              { label: "Конкурс", href: "#contest" },
-              { label: "Вопросы", href: "#faq" },
-              { label: "Контакты", href: "#contacts" },
-            ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-white/10"
-                style={{ color: "rgba(240,223,160,0.9)", letterSpacing: "0.01em" }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-
-          {/* Register Button */}
-          <div className="flex items-center gap-3">
-            <Button
-              className="rounded-full px-6 font-semibold shadow-lg"
-              style={{ background: "linear-gradient(135deg, #d4a820, #c8a020)", color: "#1a0a00", border: "1px solid rgba(240,200,60,0.6)", boxShadow: "0 2px 12px rgba(200,160,32,0.4)" }}
-            >
-              Подать заявку
-            </Button>
-          </div>
-        </nav>
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-120px)] px-6 text-center">
