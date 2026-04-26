@@ -12,9 +12,15 @@ def handler(event: dict, context) -> dict:
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '86400'}, 'body': ''}
 
-    body = json.loads(event.get('body') or '{}')
+    raw_body = event.get('body') or '{}'
+    is_base64 = event.get('isBase64Encoded', False)
+    print(f"[upload] isBase64Encoded={is_base64} body_len={len(raw_body)}")
+    if is_base64:
+        raw_body = base64.b64decode(raw_body).decode('utf-8')
+    body = json.loads(raw_body)
     album = (body.get('album') or '').strip().strip('/')
     files = body.get('files') or []
+    print(f"[upload] album={album!r} files_count={len(files)}")
 
     if not album:
         return {'statusCode': 400, 'headers': {'Access-Control-Allow-Origin': '*'}, 'body': json.dumps({'error': 'album required'})}
