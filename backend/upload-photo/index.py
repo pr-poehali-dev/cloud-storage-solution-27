@@ -29,6 +29,7 @@ def handler(event: dict, context) -> dict:
 
     access_key = os.environ['AWS_ACCESS_KEY_ID']
     cdn_base = CDN_BASE_TPL.format(key=access_key)
+    print(f"[upload] access_key={access_key[:8]}...")
 
     s3 = boto3.client(
         's3',

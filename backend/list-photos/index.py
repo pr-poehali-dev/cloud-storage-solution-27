@@ -21,6 +21,7 @@ def handler(event: dict, context) -> dict:
 
     access_key = os.environ['AWS_ACCESS_KEY_ID']
     cdn_base = f"https://cdn.poehali.dev/projects/{access_key}/bucket"
+    print(f"[list] access_key={access_key[:8]}... prefix={prefix!r}")
     image_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
 
     # flat=true — все файлы без разбивки по папкам
