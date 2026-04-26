@@ -43,12 +43,13 @@ export default function AdminPhotos() {
       preview: URL.createObjectURL(f),
       status: "pending",
     }))
-    setFiles(prev => [...prev, ...items])
+    setFiles(items)
   }
 
   const onDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault()
     addFiles(Array.from(e.dataTransfer.files))
+    if (inputRef.current) inputRef.current.value = ""
   }, [])
 
   const removeFile = (idx: number) => {
@@ -171,7 +172,7 @@ export default function AdminPhotos() {
             accept="image/*"
             multiple
             className="hidden"
-            onChange={e => addFiles(Array.from(e.target.files || []))}
+            onChange={e => { addFiles(Array.from(e.target.files || [])); e.target.value = "" }}
           />
         </div>
 
