@@ -283,17 +283,28 @@ const Index = () => {
           </div>
 
           {/* Location Badge */}
-          <a
-            href="https://yandex.ru/maps/?ll=30.583300,56.316700&z=16&text=Литературно-художественный+музей+Борки+Великолукский+район+Псковская+область"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 mb-10 px-5 py-2.5 rounded-full text-sm transition-opacity hover:opacity-75"
-            style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(200,140,40,0.4)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}
-          >
-            <Icon name="MapPin" size={16} style={{ color: "#d4a030" }} />
-            <span>Псковская область, Великолукский район, деревня Борки</span>
-            <Icon name="ExternalLink" size={13} style={{ color: "#d4a030", opacity: 0.7 }} />
-          </a>
+          <div className="flex items-center gap-2 mb-10 px-5 py-2.5 rounded-full text-sm" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(200,140,40,0.4)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}>
+            <Icon name="MapPin" size={16} style={{ color: "#d4a030", flexShrink: 0 }} />
+            <a
+              href="https://yandex.ru/maps/?ll=30.583300,56.316700&z=16&text=Литературно-художественный+музей+Борки+Великолукский+район+Псковская+область"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-75 transition-opacity"
+            >
+              Литературно-художественный музей имени писателя И.А. Васильева
+            </a>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <a
+              href="https://museum-borki.edusite.ru"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 hover:opacity-75 transition-opacity"
+              style={{ color: "#d4a030", whiteSpace: "nowrap" }}
+            >
+              Сайт музея
+              <Icon name="ExternalLink" size={12} style={{ color: "#d4a030" }} />
+            </a>
+          </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-14">
