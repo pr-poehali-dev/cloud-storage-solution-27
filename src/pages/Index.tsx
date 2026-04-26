@@ -283,10 +283,17 @@ const Index = () => {
           </div>
 
           {/* Location Badge */}
-          <div className="flex items-center gap-2 mb-10 px-5 py-2.5 rounded-full text-sm" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(200,140,40,0.4)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}>
+          <a
+            href="https://yandex.ru/maps/?ll=30.583300,56.316700&z=16&text=Литературно-художественный+музей+Борки+Великолукский+район+Псковская+область"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 mb-10 px-5 py-2.5 rounded-full text-sm transition-opacity hover:opacity-75"
+            style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(200,140,40,0.4)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}
+          >
             <Icon name="MapPin" size={16} style={{ color: "#d4a030" }} />
             <span>Псковская область, Великолукский район, деревня Борки</span>
-          </div>
+            <Icon name="ExternalLink" size={13} style={{ color: "#d4a030", opacity: 0.7 }} />
+          </a>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-14">
@@ -1082,8 +1089,8 @@ const Index = () => {
                     {
                       icon: "MapPin",
                       label: "Место проведения",
-                      value: "д. Борки, Великолукский район, Псковская область",
-                      href: "https://yandex.ru/maps/?text=д.+Борки+Великолукский+район+Псковская+область",
+                      value: "Литературно-художественный музей, д. Борки, Великолукский район",
+                      href: "https://yandex.ru/maps/?ll=30.583300,56.316700&z=16&text=Литературно-художественный+музей+Борки+Великолукский+район+Псковская+область",
                     },
                     {
                       icon: "Calendar",
@@ -1125,6 +1132,19 @@ const Index = () => {
                 </div>
               </div>
             </div>
+
+            {/* Map */}
+            <div className="mt-10 rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,90,30,0.25)", height: 340 }}>
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=30.583300%2C56.316700&z=15&pt=30.583300%2C56.316700%2Cpm2rdm&text=Литературно-художественный+музей+Борки"
+                width="100%"
+                height="340"
+                style={{ border: 0, display: "block" }}
+                title="Место проведения фестиваля"
+                allowFullScreen
+              />
+            </div>
+
           </div>
         </div>
       </section>
