@@ -269,6 +269,7 @@ const Index = () => {
               size="lg"
               className="rounded-full px-8 py-4 text-lg"
               style={{ background: "rgba(30,30,30,0.7)", border: "1px solid rgba(200,160,60,0.4)", backdropFilter: "blur(12px)", color: "#f0dfa0" }}
+              onClick={() => document.getElementById("program")?.scrollIntoView({ behavior: "smooth" })}
             >
               Узнать программу
             </Button>
