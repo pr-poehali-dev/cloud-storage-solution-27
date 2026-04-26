@@ -91,6 +91,7 @@ const Index = () => {
   const [albumCache, setAlbumCache] = useState<Record<string, AlbumData>>({})
   const [lightbox, setLightbox] = useState<{ photos: Photo[]; index: number } | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [donateOpen, setDonateOpen] = useState(false)
   const [form, setForm] = useState({ name: "", email: "", city: "", about: "", poems: "" })
   const [formFile, setFormFile] = useState<File | null>(null)
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
@@ -287,6 +288,17 @@ const Index = () => {
             <Icon name="MapPin" size={16} style={{ color: "#d4a030" }} />
             <span>Псковская область, Великолукский район, деревня Борки</span>
           </div>
+
+          {/* Donate Badge */}
+          <button
+            onClick={() => setDonateOpen(true)}
+            className="flex items-center gap-2 mb-6 px-5 py-2.5 rounded-full text-sm font-medium transition-all hover:opacity-80"
+            style={{ background: "rgba(200,160,32,0.18)", border: "1px solid rgba(200,160,32,0.5)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}
+          >
+            <Icon name="Heart" size={15} style={{ color: "#e8a030" }} />
+            Поддержать фестиваль
+            <Icon name="ChevronRight" size={14} style={{ color: "rgba(245,232,192,0.6)" }} />
+          </button>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-14">
@@ -1226,6 +1238,69 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Donate Modal */}
+      {donateOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setDonateOpen(false)}>
+          <div className="absolute inset-0" style={{ background: "rgba(10,5,0,0.75)", backdropFilter: "blur(6px)" }} />
+          <div
+            className="relative w-full max-w-lg rounded-2xl p-8 shadow-2xl"
+            style={{ background: "#fdf6e8", border: "1px solid rgba(200,160,40,0.3)" }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button onClick={() => setDonateOpen(false)} className="absolute top-4 right-4 p-1 rounded-full hover:bg-black/10 transition-colors">
+              <Icon name="X" size={20} style={{ color: "#5a3510" }} />
+            </button>
+
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "rgba(200,160,32,0.15)", border: "1px solid rgba(200,160,32,0.4)" }}>
+                <Icon name="Heart" size={20} style={{ color: "#c8a020" }} />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: "#2a1000" }}>Поддержать фестиваль</h3>
+                <p className="text-sm" style={{ color: "#7a5020" }}>Реквизиты для перевода</p>
+              </div>
+            </div>
+
+            <div className="rounded-xl p-5 space-y-3 mb-5" style={{ background: "rgba(180,130,60,0.1)", border: "1px solid rgba(140,90,30,0.2)" }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#8a6030" }}>Получатель</p>
+              {[
+                ["Наименование", 'АНО "ЦТД "РАДУГА"'],
+                ["ИНН", "6002012757"],
+                ["КПП", "600201001"],
+                ["ОГРН", "1216000001986"],
+                ["Расчётный счёт", "40703810951000011053"],
+              ].map(([label, value]) => (
+                <div key={label} className="flex justify-between gap-4 text-sm">
+                  <span style={{ color: "#8a6030" }}>{label}</span>
+                  <span className="font-medium text-right" style={{ color: "#2a1000" }}>{value}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl p-5 space-y-3 mb-5" style={{ background: "rgba(180,130,60,0.1)", border: "1px solid rgba(140,90,30,0.2)" }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "#8a6030" }}>Банк получателя</p>
+              {[
+                ["Наименование", "ПСКОВСКОЕ ОТДЕЛЕНИЕ №8630 ПАО СБЕРБАНК"],
+                ["БИК", "045805602"],
+                ["Корсчёт", "30101810300000000602"],
+                ["ИНН банка", "7707083893"],
+                ["КПП банка", "602702001"],
+              ].map(([label, value]) => (
+                <div key={label} className="flex justify-between gap-4 text-sm">
+                  <span style={{ color: "#8a6030" }}>{label}</span>
+                  <span className="font-medium text-right" style={{ color: "#2a1000" }}>{value}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl px-5 py-4 text-sm" style={{ background: "rgba(200,160,32,0.12)", border: "1px solid rgba(200,160,32,0.3)" }}>
+              <span className="font-semibold" style={{ color: "#8a6030" }}>Назначение платежа: </span>
+              <span style={{ color: "#2a1000" }}>«На развитие фестиваля "А музы не молчат!"»</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
