@@ -43,16 +43,19 @@ def handler(event: dict, context) -> dict:
             'body': json.dumps({'prefix': prefix, 'folders': sorted(folders_set), 'photos': photos}),
         }
 
-    result = s3.list_objects_v2(Bucket=BUCKET, Prefix=prefix, Delimiter='/')
-    folders = [cp['Prefix'] for cp in result.get('CommonPrefixes', [])]
+    paginator = s3.get_paginator('list_objects_v2')
     photos = []
-    for obj in result.get('Contents', []):
-        key = obj['Key']
-        if key.lower().endswith(image_exts):
-            photos.append({'key': key, 'url': f"{cdn_base}/{key}", 'size': obj['Size']})
+    folders_set = set()
+    for page in paginator.paginate(Bucket=BUCKET, Prefix=prefix, Delimiter='/'):
+        for cp in page.get('CommonPrefixes', []):
+            folders_set.add(cp['Prefix'])
+        for obj in page.get('Contents', []):
+            key = obj['Key']
+            if key.lower().endswith(image_exts):
+                photos.append({'key': key, 'url': f"{cdn_base}/{key}", 'size': obj['Size']})
 
     return {
         'statusCode': 200,
         'headers': {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
-        'body': json.dumps({'prefix': prefix, 'folders': folders, 'photos': photos, 'truncated': result.get('IsTruncated', False)}),
+        'body': json.dumps({'prefix': prefix, 'folders': sorted(folders_set), 'photos': photos}),
     }
