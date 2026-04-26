@@ -1212,7 +1212,7 @@ const Index = () => {
                   © 2026 Фестиваль «А музы не молчат!» · Псковская область
                 </p>
                 <p className="text-xs" style={{ color: "#8a6030" }}>
-                  д. Борки, Великолукский район · 2–3 мая 2026
+                  <a href="https://museum-borki.edusite.ru" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity underline decoration-dotted">Литературно-художественный музей им. И.А. Васильева, д. Борки</a> · 2–3 мая 2026
                 </p>
               </div>
             </div>
