@@ -38,6 +38,23 @@ def handler(event: dict, context) -> dict:
         aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
     )
 
+    # ensure bucket exists
+    try:
+        s3.head_bucket(Bucket=BUCKET)
+    except Exception:
+        try:
+            s3.create_bucket(Bucket=BUCKET)
+            print(f"[upload] created bucket {BUCKET}")
+        except Exception as e:
+            print(f"[upload] create_bucket error: {e}")
+
+    # list all buckets to debug
+    try:
+        buckets = s3.list_buckets()
+        print(f"[upload] available buckets: {[b['Name'] for b in buckets.get('Buckets', [])]}")
+    except Exception as e:
+        print(f"[upload] list_buckets error: {e}")
+
     uploaded = []
     errors = []
     for f in files:
