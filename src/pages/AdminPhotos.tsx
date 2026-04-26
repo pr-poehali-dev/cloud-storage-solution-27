@@ -93,6 +93,11 @@ export default function AdminPhotos() {
           if (err) return { ...f, status: "error", error: err.error }
           return { ...f, status: "done", url: uploaded?.url }
         }))
+        if (!err) {
+          setTimeout(() => {
+            setFiles(prev => prev.filter(f => f.file !== item.file))
+          }, 1500)
+        }
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e)
         setFiles(prev => prev.map(f => f.file === item.file ? { ...f, status: "error", error: msg } : f))
