@@ -91,6 +91,9 @@ const Index = () => {
   const [albumCache, setAlbumCache] = useState<Record<string, AlbumData>>({})
   const [lightbox, setLightbox] = useState<{ photos: Photo[]; index: number } | null>(null)
   const [scrolled, setScrolled] = useState(false)
+  const [form, setForm] = useState({ name: "", email: "", city: "", about: "", poems: "" })
+  const [formFile, setFormFile] = useState<File | null>(null)
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -118,6 +121,34 @@ const Index = () => {
 
   const openAlbum = (id: string) => {
     setActiveAlbum(prev => prev === id ? null : id)
+  }
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setFormStatus("sending")
+    try {
+      let file_name = ""
+      let file_data = ""
+      if (formFile) {
+        file_name = formFile.name
+        const buf = await formFile.arrayBuffer()
+        file_data = btoa(String.fromCharCode(...new Uint8Array(buf)))
+      }
+      const res = await fetch("https://functions.poehali.dev/23226d42-ae39-48c8-9f57-718eea50bee8", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, file_name, file_data }),
+      })
+      if (res.ok) {
+        setFormStatus("success")
+        setForm({ name: "", email: "", city: "", about: "", poems: "" })
+        setFormFile(null)
+      } else {
+        setFormStatus("error")
+      }
+    } catch {
+      setFormStatus("error")
+    }
   }
 
   const toggleFaq = (index: number) => {
@@ -935,50 +966,109 @@ const Index = () => {
               {/* Contact Form */}
               <div className="rounded-2xl p-8 shadow-2xl" style={{ background: "rgba(255,248,240,0.97)" }}>
                 <h3 className="text-2xl font-bold mb-6" style={{ color: "#4a1020" }}>Подать заявку на участие</h3>
-                <form className="space-y-5">
-                  <div>
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Имя и фамилия</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
-                      style={{ borderColor: "#a06820", focusRingColor: "#7a1f2e" }}
-                      placeholder="Ваше полное имя"
-                    />
+
+                {formStatus === "success" ? (
+                  <div className="flex flex-col items-center gap-4 py-10 text-center">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "rgba(180,140,20,0.15)", border: "2px solid #c8a020" }}>
+                      <Icon name="CheckCircle" size={32} style={{ color: "#c8a020" }} />
+                    </div>
+                    <p className="text-lg font-semibold" style={{ color: "#2a1000" }}>Заявка отправлена!</p>
+                    <p className="text-sm" style={{ color: "#5a3510" }}>Мы свяжемся с вами в течение одного рабочего дня</p>
+                    <button className="text-sm underline mt-2" style={{ color: "#a06820" }} onClick={() => setFormStatus("idle")}>Отправить ещё одну</button>
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Email</label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
-                      style={{ borderColor: "#a06820" }}
-                      placeholder="your@email.ru"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Город / регион</label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none"
-                      style={{ borderColor: "#a06820" }}
-                      placeholder="Откуда вы?"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Ваши стихотворения / вопрос</label>
-                    <textarea
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none resize-none"
-                      style={{ borderColor: "#a06820" }}
-                      placeholder="Прикрепите текст или задайте вопрос..."
-                    />
-                  </div>
-                  <Button
-                    className="w-full rounded-lg py-3 text-base font-semibold"
-                    style={{ background: "#c8a020", color: "#1a1a1a" }}
-                  >
-                    Отправить заявку
-                  </Button>
-                </form>
+                ) : (
+                  <form className="space-y-5" onSubmit={handleFormSubmit}>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Имя и фамилия *</label>
+                      <input
+                        type="text"
+                        required
+                        className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
+                        style={{ borderColor: "#a06820" }}
+                        placeholder="Ваше полное имя"
+                        value={form.name}
+                        onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Email *</label>
+                      <input
+                        type="email"
+                        required
+                        className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none focus:ring-2"
+                        style={{ borderColor: "#a06820" }}
+                        placeholder="your@email.ru"
+                        value={form.email}
+                        onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Город / регион</label>
+                      <input
+                        type="text"
+                        className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none"
+                        style={{ borderColor: "#a06820" }}
+                        placeholder="Откуда вы?"
+                        value={form.city}
+                        onChange={e => setForm(f => ({ ...f, city: e.target.value }))}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Краткая информация об участнике</label>
+                      <textarea
+                        rows={3}
+                        className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none resize-none"
+                        style={{ borderColor: "#a06820" }}
+                        placeholder="Расскажите о себе: опыт, регалии, творческий путь..."
+                        value={form.about}
+                        onChange={e => setForm(f => ({ ...f, about: e.target.value }))}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Ваши стихотворения / вопрос</label>
+                      <textarea
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-lg border text-gray-800 focus:outline-none resize-none"
+                        style={{ borderColor: "#a06820" }}
+                        placeholder="Прикрепите текст или задайте вопрос..."
+                        value={form.poems}
+                        onChange={e => setForm(f => ({ ...f, poems: e.target.value }))}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2" style={{ color: "#4a1020" }}>Прикрепить файл (.doc, .docx)</label>
+                      <label
+                        className="flex items-center gap-3 w-full px-4 py-3 rounded-lg border cursor-pointer transition-colors hover:bg-amber-50"
+                        style={{ borderColor: "#a06820", borderStyle: "dashed" }}
+                      >
+                        <Icon name="Paperclip" size={18} style={{ color: "#a06820" }} />
+                        <span className="text-sm" style={{ color: formFile ? "#2a1000" : "#9a7040" }}>
+                          {formFile ? formFile.name : "Выберите файл Word..."}
+                        </span>
+                        <input
+                          type="file"
+                          accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                          className="hidden"
+                          onChange={e => setFormFile(e.target.files?.[0] ?? null)}
+                        />
+                      </label>
+                      {formFile && (
+                        <button type="button" className="text-xs mt-1 underline" style={{ color: "#a06820" }} onClick={() => setFormFile(null)}>Удалить файл</button>
+                      )}
+                    </div>
+                    {formStatus === "error" && (
+                      <p className="text-sm text-red-600">Ошибка при отправке. Попробуйте ещё раз.</p>
+                    )}
+                    <Button
+                      type="submit"
+                      disabled={formStatus === "sending"}
+                      className="w-full rounded-lg py-3 text-base font-semibold"
+                      style={{ background: "#c8a020", color: "#1a1a1a", opacity: formStatus === "sending" ? 0.7 : 1 }}
+                    >
+                      {formStatus === "sending" ? "Отправляем..." : "Отправить заявку"}
+                    </Button>
+                  </form>
+                )}
               </div>
 
               {/* Contact Info */}

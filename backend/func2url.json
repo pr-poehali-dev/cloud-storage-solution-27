@@ -1,4 +1,5 @@
 {
+  "send-application": "https://functions.poehali.dev/23226d42-ae39-48c8-9f57-718eea50bee8",
   "upload-photo": "https://functions.poehali.dev/afabb2f4-99b1-423d-bee9-009b9b4df0e1",
   "list-photos": "https://functions.poehali.dev/23053f98-85ac-4dbb-81fb-073764742665"
 }
