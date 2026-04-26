@@ -51,13 +51,8 @@ def handler(event: dict, context) -> dict:
         if key.lower().endswith(image_exts):
             photos.append({'key': key, 'url': f"{cdn_base}/{key}", 'size': obj['Size']})
 
-    # Диагностика: также проверим корень bucket
-    debug_root = s3.list_objects_v2(Bucket=BUCKET, Delimiter='/', MaxKeys=20)
-    debug_folders = [cp['Prefix'] for cp in debug_root.get('CommonPrefixes', [])]
-    debug_objects = [o['Key'] for o in debug_root.get('Contents', [])]
-
     return {
         'statusCode': 200,
         'headers': {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
-        'body': json.dumps({'prefix': prefix, 'folders': folders, 'photos': photos, 'truncated': result.get('IsTruncated', False), 'debug_root_folders': debug_folders, 'debug_root_objects': debug_objects}),
+        'body': json.dumps({'prefix': prefix, 'folders': folders, 'photos': photos, 'truncated': result.get('IsTruncated', False)}),
     }
