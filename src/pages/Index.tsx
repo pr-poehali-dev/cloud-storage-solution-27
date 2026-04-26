@@ -289,17 +289,6 @@ const Index = () => {
             <span>Псковская область, Великолукский район, деревня Борки</span>
           </div>
 
-          {/* Donate Badge */}
-          <button
-            onClick={() => setDonateOpen(true)}
-            className="flex items-center gap-2 mb-6 px-5 py-2.5 rounded-full text-sm font-medium transition-all hover:opacity-80"
-            style={{ background: "rgba(200,160,32,0.18)", border: "1px solid rgba(200,160,32,0.5)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}
-          >
-            <Icon name="Heart" size={15} style={{ color: "#e8a030" }} />
-            Поддержать фестиваль
-            <Icon name="ChevronRight" size={14} style={{ color: "rgba(245,232,192,0.6)" }} />
-          </button>
-
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-14">
             <Button
@@ -321,6 +310,18 @@ const Index = () => {
           </div>
 
 
+        </div>
+
+        {/* Donate Button */}
+        <div className="absolute bottom-4 right-4 z-10">
+          <button
+            onClick={() => setDonateOpen(true)}
+            className="flex flex-col items-center justify-center gap-1.5 w-24 h-24 rounded-xl text-xs font-semibold transition-all hover:scale-105 hover:brightness-110"
+            style={{ background: "rgba(100,10,30,0.85)", border: "1px solid rgba(180,40,60,0.6)", backdropFilter: "blur(12px)", color: "#fde8e8", boxShadow: "0 4px 20px rgba(100,10,30,0.5)" }}
+          >
+            <Icon name="Heart" size={22} style={{ color: "#f08090" }} />
+            <span className="text-center leading-tight">Поддержать фестиваль</span>
+          </button>
         </div>
 
         {/* Photo Caption */}
