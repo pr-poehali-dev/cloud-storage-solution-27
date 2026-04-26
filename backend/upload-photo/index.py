@@ -39,9 +39,12 @@ def handler(event: dict, context) -> dict:
             ext = f.get('ext', 'jpg').lower().lstrip('.')
             file_id = str(uuid.uuid4())
             key = f"{album}/{file_id}.{ext}"
+            print(f"[upload] album={album!r} key={key!r} size={len(data)} mime={f.get('mime')}")
             s3.put_object(Bucket=BUCKET, Key=key, Body=data, ContentType=f.get('mime', 'image/jpeg'))
+            print(f"[upload] OK: {key}")
             uploaded.append({'key': key, 'url': f"{cdn_base}/{key}"})
         except Exception as e:
+            print(f"[upload] ERROR: {e}")
             errors.append({'name': f.get('name', '?'), 'error': str(e)})
 
     return {
