@@ -158,12 +158,12 @@ const Index = () => {
         </div>
 
         {/* Navigation */}
-        <nav className="relative z-10 flex items-center justify-between p-6">
+        <nav className="relative z-10 flex items-center justify-between px-6 py-4">
           {/* Logo */}
-          <img src={LOGO} alt="Логотип фестиваля" className="w-20 h-20 object-contain drop-shadow-lg" />
+          <img src={LOGO} alt="Логотип фестиваля" className="w-16 h-16 object-contain drop-shadow-lg" />
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5 rounded-full px-2 py-1.5" style={{ background: "rgba(10,5,5,0.55)", backdropFilter: "blur(20px)", border: "1px solid rgba(200,160,60,0.25)", boxShadow: "0 2px 24px rgba(0,0,0,0.35)" }}>
             {[
               { label: "О фестивале", href: "#about" },
               { label: "История", href: "#history" },
@@ -175,8 +175,8 @@ const Index = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="px-4 py-2 rounded-full text-sm hover:opacity-80 transition-opacity"
-                style={{ background: "rgba(30,30,30,0.75)", border: "1px solid rgba(200,160,60,0.4)", backdropFilter: "blur(12px)", color: "#f0dfa0" }}
+                className="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 hover:bg-white/10"
+                style={{ color: "rgba(240,223,160,0.9)", letterSpacing: "0.01em" }}
               >
                 {item.label}
               </a>
@@ -186,8 +186,8 @@ const Index = () => {
           {/* Register Button */}
           <div className="flex items-center gap-3">
             <Button
-              className="rounded-full px-6 font-semibold"
-              style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}
+              className="rounded-full px-6 font-semibold shadow-lg"
+              style={{ background: "linear-gradient(135deg, #d4a820, #c8a020)", color: "#1a0a00", border: "1px solid rgba(240,200,60,0.6)", boxShadow: "0 2px 12px rgba(200,160,32,0.4)" }}
             >
               Подать заявку
             </Button>
