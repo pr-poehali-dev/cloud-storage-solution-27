@@ -313,9 +313,16 @@ const Index = () => {
 
         {/* Photo Caption */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-          <p className="text-xs italic px-3 py-1 rounded-full" style={{ color: "rgba(245,213,176,0.55)", background: "rgba(0,0,0,0.3)" }}>
+          <a
+            href="https://museum-borki.edusite.ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs italic px-3 py-1.5 rounded-full transition-opacity hover:opacity-80"
+            style={{ color: "rgba(245,213,176,0.75)", background: "rgba(0,0,0,0.4)", border: "1px solid rgba(245,213,176,0.15)", backdropFilter: "blur(8px)" }}
+          >
+            <Icon name="ExternalLink" size={11} style={{ color: "rgba(245,213,176,0.55)", flexShrink: 0 }} />
             Литературно-художественный музей им. И.А. Васильева, д. Борки
-          </p>
+          </a>
         </div>
       </div>
 
