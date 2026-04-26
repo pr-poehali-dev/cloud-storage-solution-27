@@ -78,12 +78,14 @@ export default function AdminPhotos() {
       setFiles(prev => prev.map(f => f.file === item.file ? { ...f, status: "uploading" } : f))
       try {
         const data = await toBase64(item.file)
+        console.log("[upload] sending", item.file.name, "to album:", album, "size:", data.length)
         const res = await fetch(UPLOAD_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ album, files: [{ name: item.file.name, data, ext: item.file.name.split(".").pop() || "jpg", mime: item.file.type || "image/jpeg" }] }),
         })
         const json = await res.json()
+        console.log("[upload] response:", JSON.stringify(json))
         const uploaded = json.uploaded?.[0]
         const err = json.errors?.[0]
         setFiles(prev => prev.map(f => {
