@@ -186,14 +186,14 @@ export default function AdminPhotos() {
             </div>
             <div className="flex gap-2">
               <button
-                onClick={() => setFiles([])}
+                onClick={e => { e.stopPropagation(); setFiles([]) }}
                 className="px-4 py-2 rounded-xl text-sm"
                 style={{ background: "rgba(60,35,10,0.5)", border: "1px solid rgba(140,90,30,0.3)", color: "rgba(245,213,176,0.6)" }}
               >
                 Очистить
               </button>
               <button
-                onClick={upload}
+                onClick={e => { e.stopPropagation(); upload() }}
                 disabled={uploading || pendingCount === 0}
                 className="px-5 py-2 rounded-xl text-sm font-semibold transition-opacity disabled:opacity-50"
                 style={{ background: "rgba(200,160,32,0.85)", color: "#1a0e00" }}
