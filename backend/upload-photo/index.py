@@ -3,8 +3,9 @@ import os
 import base64
 import uuid
 import boto3
+import psycopg2
 
-BUCKET = 'files'
+BUCKET = 'bucket'
 CDN_BASE_TPL = "https://cdn.poehali.dev/projects/{key}/bucket"
 
 TRANSLIT = {
@@ -22,13 +23,12 @@ def translit(s):
     return ''.join(TRANSLIT.get(c, c) for c in s)
 
 def handler(event: dict, context) -> dict:
-    """Загружает фото в указанный альбом (папку) S3-хранилища."""
+    """Загружает фото в S3 и сохраняет запись в БД."""
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '86400'}, 'body': ''}
 
     raw_body = event.get('body') or '{}'
-    is_base64 = event.get('isBase64Encoded', False)
-    if is_base64:
+    if event.get('isBase64Encoded'):
         raw_body = base64.b64decode(raw_body).decode('utf-8')
     body = json.loads(raw_body)
     album = (body.get('album') or '').strip().strip('/')
@@ -40,7 +40,6 @@ def handler(event: dict, context) -> dict:
         return {'statusCode': 400, 'headers': {'Access-Control-Allow-Origin': '*'}, 'body': json.dumps({'error': 'files required'})}
 
     album_key = translit(album)
-    print(f"[upload] album={album!r} album_key={album_key!r} files_count={len(files)}")
 
     access_key = os.environ['AWS_ACCESS_KEY_ID']
     cdn_base = CDN_BASE_TPL.format(key=access_key)
@@ -52,6 +51,9 @@ def handler(event: dict, context) -> dict:
         aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
     )
 
+    conn = psycopg2.connect(os.environ['DATABASE_URL'])
+    schema = os.environ.get('MAIN_DB_SCHEMA', 'public')
+
     uploaded = []
     errors = []
     for f in files:
@@ -60,15 +62,19 @@ def handler(event: dict, context) -> dict:
             ext = f.get('ext', 'jpg').lower().lstrip('.')
             file_id = str(uuid.uuid4())
             key = f"{album_key}/{file_id}.{ext}"
-            print(f"[upload] key={key!r} size={len(data)}")
+            url = f"{cdn_base}/{key}"
             s3.put_object(Bucket=BUCKET, Key=key, Body=data, ContentType=f.get('mime', 'image/jpeg'))
-            ls = s3.list_objects_v2(Bucket=BUCKET, Prefix=album_key + '/', MaxKeys=3)
-            print(f"[upload] after put, contents: {[o['Key'] for o in ls.get('Contents', [])]}")
-            uploaded.append({'key': key, 'url': f"{cdn_base}/{key}"})
+            with conn.cursor() as cur:
+                cur.execute(
+                    f"INSERT INTO {schema}.photos (album, key, url, size) VALUES (%s, %s, %s, %s)",
+                    (album, key, url, len(data))
+                )
+            conn.commit()
+            uploaded.append({'key': key, 'url': url})
         except Exception as e:
-            print(f"[upload] ERROR: {e}")
             errors.append({'name': f.get('name', '?'), 'error': str(e)})
 
+    conn.close()
     return {
         'statusCode': 200,
         'headers': {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},

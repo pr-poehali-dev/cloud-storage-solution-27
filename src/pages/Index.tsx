@@ -8,7 +8,7 @@ const LIST_PHOTOS_URL = "https://functions.poehali.dev/23053f98-85ac-4dbb-81fb-0
 const ALBUM_YEARS = ["2025","2024","2023","2022","2021","2020","2019","2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008"]
 const ALBUMS = [
   ...ALBUM_YEARS.map(y => ({ id: y, label: y, prefix: `${y}/` })),
-  { id: "letopis", label: "Летопись", prefix: "Letopis/" },
+  { id: "letopis", label: "Летопись", prefix: "Летопись/" },
 ]
 
 interface Photo { key: string; url: string }
