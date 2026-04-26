@@ -322,14 +322,16 @@ const Index = () => {
 
         {/* Donate Button */}
         <div className="absolute bottom-4 right-4 z-10">
-          <button
-            onClick={() => setDonateOpen(true)}
+          <a
+            href="https://b2b.cbrpay.ru/AS1C0059T1I54J8V9BV8L7UGQA8LP52P"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center justify-center gap-1.5 w-24 h-24 rounded-xl text-xs font-semibold transition-all hover:scale-105 hover:brightness-110"
             style={{ background: "rgba(100,10,30,0.85)", border: "1px solid rgba(180,40,60,0.6)", backdropFilter: "blur(12px)", color: "#fde8e8", boxShadow: "0 4px 20px rgba(100,10,30,0.5)" }}
           >
             <Icon name="Heart" size={22} style={{ color: "#f08090" }} />
             <span className="text-center leading-tight">Поддержать фестиваль</span>
-          </button>
+          </a>
         </div>
 
         {/* Photo Caption */}
