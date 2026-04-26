@@ -70,8 +70,10 @@ def handler(event: dict, context) -> dict:
                     (album, key, url, len(data))
                 )
             conn.commit()
+            print(f"[upload] saved: album={album!r} key={key!r}")
             uploaded.append({'key': key, 'url': url})
         except Exception as e:
+            print(f"[upload] ERROR: {e}")
             errors.append({'name': f.get('name', '?'), 'error': str(e)})
 
     conn.close()
