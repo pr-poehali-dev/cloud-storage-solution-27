@@ -1083,33 +1083,42 @@ const Index = () => {
                       icon: "MapPin",
                       label: "Место проведения",
                       value: "д. Борки, Великолукский район, Псковская область",
+                      href: "https://yandex.ru/maps/?text=д.+Борки+Великолукский+район+Псковская+область",
                     },
                     {
                       icon: "Calendar",
                       label: "Дата",
                       value: "2–3 мая 2026 года",
+                      href: null,
                     },
                     {
                       icon: "User",
                       label: "Президент фестиваля",
                       value: "Светлана Размыслович",
+                      href: null,
                     },
                     {
                       icon: "Mail",
                       label: "Email фестиваля",
                       value: "swetslova.ru@yandex.ru",
+                      href: "mailto:swetslova.ru@yandex.ru",
                     },
                     {
                       icon: "Phone",
                       label: "Телефон",
                       value: "+7-911-887-98-11",
+                      href: "tel:+79118879811",
                     },
                   ].map((item) => (
                     <div key={item.label} className="flex items-start gap-4 p-4 rounded-xl" style={{ background: "rgba(180,130,60,0.2)", border: "1px solid rgba(140,90,30,0.25)" }}>
                       <Icon name={item.icon} size={20} style={{ color: "#c8a020", marginTop: 2, flexShrink: 0 }} />
                       <div>
                         <div className="text-xs font-medium mb-0.5" style={{ color: "#8a6030" }}>{item.label}</div>
-                        <div className="text-sm font-medium" style={{ color: "#3a1f00" }}>{item.value}</div>
+                        {item.href ? (
+                          <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-sm font-medium underline decoration-dotted hover:opacity-70 transition-opacity" style={{ color: "#3a1f00" }}>{item.value}</a>
+                        ) : (
+                          <div className="text-sm font-medium" style={{ color: "#3a1f00" }}>{item.value}</div>
+                        )}
                       </div>
                     </div>
                   ))}
