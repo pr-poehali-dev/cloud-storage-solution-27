@@ -216,10 +216,13 @@ export default function AdminPhotos() {
                   </div>
                 )}
                 {f.status === "error" && (
-                  <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.5)" }}>
-                    <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: "rgba(248,113,113,0.9)" }}>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 p-1" style={{ background: "rgba(0,0,0,0.7)" }}>
+                    <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(248,113,113,0.9)" }}>
                       <Icon name="X" size={14} style={{ color: "#fff" }} />
                     </div>
+                    {f.error && (
+                      <p className="text-center leading-tight" style={{ fontSize: 9, color: "#fca5a5", wordBreak: "break-all" }}>{f.error}</p>
+                    )}
                   </div>
                 )}
                 {/* Remove btn */}
