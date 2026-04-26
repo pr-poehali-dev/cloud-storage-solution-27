@@ -276,12 +276,20 @@ const Index = () => {
           </p>
 
           {/* Date Block */}
-          <div className="flex items-center gap-3 mb-6 px-6 py-4 rounded-2xl" style={{ background: "rgba(80,40,0,0.6)", border: "1px solid rgba(200,140,40,0.45)", backdropFilter: "blur(12px)" }}>
+          <a
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Фестиваль+«А+музы+не+молчат!»&dates=20260502/20260504&details=Всероссийский+фестиваль+фронтовой+поэзии&location=д.+Борки,+Великолукский+район,+Псковская+область"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 mb-6 px-6 py-4 rounded-2xl transition-all hover:brightness-110 hover:scale-[1.02]"
+            style={{ background: "rgba(80,40,0,0.6)", border: "1px solid rgba(200,140,40,0.45)", backdropFilter: "blur(12px)" }}
+          >
             <Icon name="Calendar" size={24} style={{ color: "#d4a030" }} />
             <div className="text-left">
               <div className="text-2xl font-bold" style={{ color: "#f5e8c0" }}>2–3 мая 2026</div>
+              <div className="text-xs mt-0.5" style={{ color: "rgba(212,160,48,0.8)" }}>Добавить в календарь</div>
             </div>
-          </div>
+            <Icon name="ExternalLink" size={14} style={{ color: "rgba(212,160,48,0.6)", marginLeft: "auto" }} />
+          </a>
 
           {/* Location Badge */}
           <div className="flex items-center gap-2 mb-10 px-5 py-2.5 rounded-full text-sm" style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(200,140,40,0.4)", backdropFilter: "blur(12px)", color: "#f5e8c0" }}>
