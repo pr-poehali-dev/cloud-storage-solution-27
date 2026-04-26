@@ -200,6 +200,7 @@ const Index = () => {
         <Button
           className="rounded-full px-6 font-semibold shadow-lg"
           style={{ background: "linear-gradient(135deg, #d4a820, #c8a020)", color: "#1a0a00", border: "1px solid rgba(240,200,60,0.6)", boxShadow: "0 2px 12px rgba(200,160,32,0.4)" }}
+          onClick={() => document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" })}
         >
           Подать заявку
         </Button>
@@ -262,6 +263,7 @@ const Index = () => {
               size="lg"
               className="rounded-full px-8 py-4 text-lg font-semibold"
               style={{ background: "#c8a020", color: "#1a1a1a", border: "1px solid #e0c040" }}
+              onClick={() => document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" })}
             >
               Подать заявку на участие
             </Button>
