@@ -1350,6 +1350,17 @@ const Index = () => {
           </div>
         </div>
       )}
+
+      {/* Scroll to top button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed bottom-8 right-8 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full shadow-lg text-sm font-semibold transition-all hover:scale-105 active:scale-95"
+        style={{ background: "#c8a020", color: "#1a1a1a", boxShadow: "0 4px 20px rgba(200,160,32,0.4)" }}
+        title="На главную"
+      >
+        <Icon name="ArrowUp" size={16} />
+        Наверх
+      </button>
     </div>
   )
 }
