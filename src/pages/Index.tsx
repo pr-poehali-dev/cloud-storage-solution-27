@@ -746,7 +746,7 @@ const Index = () => {
       </section>
 
       {/* Contest Section */}
-      <section id="contest" className="relative z-10 py-24 px-6" style={{ scrollMarginTop: "160px" }}>
+      <section id="contest" className="relative z-10 py-24 px-6" style={{ scrollMarginTop: "260px" }}>
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
