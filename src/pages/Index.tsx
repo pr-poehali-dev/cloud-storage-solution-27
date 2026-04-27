@@ -339,7 +339,7 @@ const Index = () => {
         </div>
 
         {/* Donate Button */}
-        <div className="absolute bottom-4 right-4 z-10">
+        <div className="absolute bottom-24 right-4 z-10">
           <a
             href="https://b2b.cbrpay.ru/AS1C0059T1I54J8V9BV8L7UGQA8LP52P"
             target="_blank"
