@@ -207,18 +207,18 @@ const Index = () => {
         }}
       >
         <div className="flex items-center gap-2">
-          {/* Логотип фестиваля + под ним два логотипа столбиком */}
-          <div className="flex flex-col items-center gap-1">
-            <img src={LOGO} alt="Логотип фестиваля" className="w-10 h-10 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="w-10 h-6 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="w-10 h-6 object-contain drop-shadow-lg" />
+          <div className="flex flex-col items-center gap-1 self-stretch justify-center">
+            <img src={LOGO} alt="Логотип фестиваля" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="w-16 h-10 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="w-16 h-10 object-contain drop-shadow-lg" />
           </div>
-          {/* Остальные логотипы в горизонтальный ряд, выровненные по центру */}
-          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-10 h-10 object-contain drop-shadow-lg" />
-          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/e0ad1eb8-c110-433e-a0de-02994b25629e.PNG" alt="Информационно-культурный центр Великолукский район" className="w-10 h-10 object-contain drop-shadow-lg" />
-          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/1034b2f6-28ff-4c53-84af-440f75e77f72.PNG" alt="Администрация Великолукского района" className="w-10 h-10 object-contain drop-shadow-lg" />
-          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/8610c0f6-daa4-4b62-bafa-9fb36c314cc7.PNG" alt="Великие Луки" className="w-10 h-10 object-contain drop-shadow-lg" />
-          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/9715bd25-a800-4431-99cb-c84bdb9af298.jpg" alt="Псковский областной центр народного творчества" className="h-10 max-w-[120px] object-contain drop-shadow-lg" />
+          <div className="flex items-center gap-2 self-stretch">
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/e0ad1eb8-c110-433e-a0de-02994b25629e.PNG" alt="Информационно-культурный центр Великолукский район" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/1034b2f6-28ff-4c53-84af-440f75e77f72.PNG" alt="Администрация Великолукского района" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/8610c0f6-daa4-4b62-bafa-9fb36c314cc7.PNG" alt="Великие Луки" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/9715bd25-a800-4431-99cb-c84bdb9af298.jpg" alt="Псковский областной центр народного творчества" className="h-10 max-w-[120px] object-contain drop-shadow-lg" />
+          </div>
         </div>
 
         <div
