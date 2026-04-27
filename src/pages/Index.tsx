@@ -750,6 +750,9 @@ const Index = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <div className="flex justify-center items-center gap-4 mb-6">
+              <a href="https://светслова.рф" target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a829fb11-b9f7-4394-8dc2-705c9f661ece.png" alt="Светслова" className="h-20 object-contain hover:opacity-80 transition-opacity" />
+              </a>
               <a href="https://осияннаярусь.рф" target="_blank" rel="noopener noreferrer">
                 <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="h-20 object-contain hover:opacity-80 transition-opacity" />
               </a>
