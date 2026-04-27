@@ -750,8 +750,12 @@ const Index = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <div className="flex justify-center items-center gap-4 mb-6">
-              <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="h-20 object-contain" />
-              <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="h-20 object-contain" />
+              <a href="https://осияннаярусь.рф" target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="h-20 object-contain hover:opacity-80 transition-opacity" />
+              </a>
+              <a href="https://fzo.gov.ru" target="_blank" rel="noopener noreferrer">
+                <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="h-20 object-contain hover:opacity-80 transition-opacity" />
+              </a>
             </div>
             <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-4" style={{ background: "rgba(180,130,60,0.2)", border: "1px solid rgba(140,90,30,0.4)", color: "#3a1f00" }}>
               Конкурс чтецов
