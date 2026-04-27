@@ -209,8 +209,8 @@ const Index = () => {
         <div className="flex items-center gap-2">
           <div className="flex flex-col items-center gap-1">
             <img src={LOGO} alt="Логотип фестиваля" className="w-16 h-16 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="h-8 max-w-[64px] object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="h-8 max-w-[64px] object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="w-16 h-8 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="w-16 h-8 object-contain drop-shadow-lg" />
           </div>
           <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-10 h-10 object-contain drop-shadow-lg" />
           <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/e0ad1eb8-c110-433e-a0de-02994b25629e.PNG" alt="Информационно-культурный центр Великолукский район" className="w-10 h-10 object-contain drop-shadow-lg" />
