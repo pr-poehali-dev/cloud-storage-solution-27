@@ -209,6 +209,7 @@ const Index = () => {
         <div className="flex items-center gap-2">
           <div className="flex flex-col items-center gap-1 self-stretch justify-center">
             <img src={LOGO} alt="Логотип фестиваля" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/20500c95-6edc-45b7-b1b6-16beba2172d6.jpeg" alt="Осиянная Русь" className="w-16 h-10 object-contain drop-shadow-lg" />
           </div>
           <div className="flex items-center gap-2 self-stretch">
             <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-10 h-10 object-contain drop-shadow-lg" />
