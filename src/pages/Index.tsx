@@ -200,8 +200,8 @@ const Index = () => {
       <nav
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 transition-all duration-300"
         style={{
-          background: scrolled ? "rgba(10,5,5,0.85)" : "transparent",
-          backdropFilter: scrolled ? "blur(20px)" : "none",
+          background: "rgba(10,5,5,0.75)",
+          backdropFilter: "blur(20px)",
           borderBottom: scrolled ? "1px solid rgba(200,160,60,0.2)" : "none",
           boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.4)" : "none",
         }}
