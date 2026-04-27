@@ -86,6 +86,10 @@ export default function AdminPhotos() {
   return (
     <div className="min-h-screen px-4 py-10" style={{ background: "#0e0a04", color: "#f5d5b0" }}>
       <div className="max-w-3xl mx-auto space-y-8">
+        <a href="/" className="inline-flex items-center gap-2 text-sm opacity-70 hover:opacity-100 transition-opacity" style={{ color: "#f5d5b0" }}>
+          <Icon name="ArrowLeft" size={16} />
+          На главную
+        </a>
 
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "rgba(200,160,32,0.15)", border: "1px solid rgba(200,160,32,0.3)" }}>
