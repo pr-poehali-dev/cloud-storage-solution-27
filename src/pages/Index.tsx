@@ -209,6 +209,10 @@ const Index = () => {
         <div className="flex items-center gap-3">
           <img src={LOGO} alt="Логотип фестиваля" className="w-14 h-14 object-contain drop-shadow-lg" />
           <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/e0ad1eb8-c110-433e-a0de-02994b25629e.PNG" alt="Информационно-культурный центр Великолукский район" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/1034b2f6-28ff-4c53-84af-440f75e77f72.PNG" alt="Администрация Великолукского района" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/8610c0f6-daa4-4b62-bafa-9fb36c314cc7.PNG" alt="Великие Луки" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/9715bd25-a800-4431-99cb-c84bdb9af298.jpg" alt="Псковский областной центр народного творчества" className="h-14 object-contain drop-shadow-lg" />
         </div>
 
         <div
