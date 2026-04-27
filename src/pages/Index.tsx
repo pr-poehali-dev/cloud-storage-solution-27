@@ -207,7 +207,7 @@ const Index = () => {
         }}
       >
         <div className="flex items-center gap-2">
-          <img src={LOGO} alt="Логотип фестиваля" className="w-10 h-10 object-contain drop-shadow-lg" />
+          <img src={LOGO} alt="Логотип фестиваля" className="w-16 h-16 object-contain drop-shadow-lg" />
           <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-10 h-10 object-contain drop-shadow-lg" />
           <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/e0ad1eb8-c110-433e-a0de-02994b25629e.PNG" alt="Информационно-культурный центр Великолукский район" className="w-10 h-10 object-contain drop-shadow-lg" />
           <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/1034b2f6-28ff-4c53-84af-440f75e77f72.PNG" alt="Администрация Великолукского района" className="w-10 h-10 object-contain drop-shadow-lg" />
