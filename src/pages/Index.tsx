@@ -206,21 +206,17 @@ const Index = () => {
           boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.4)" : "none",
         }}
       >
-        <div className="flex items-start gap-2">
-          {/* Столбик: А музы не молчат + Союз писателей + ЦНТ + Осиянная Русь + Защитники */}
+        <div className="flex items-center gap-2">
           <div className="flex flex-col items-center gap-1">
-            <img src={LOGO} alt="Логотип фестиваля" className="w-16 h-16 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-16 h-16 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/9715bd25-a800-4431-99cb-c84bdb9af298.jpg" alt="Псковский областной центр народного творчества" className="w-16 h-10 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="w-16 h-10 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="w-16 h-10 object-contain drop-shadow-lg" />
+            <img src={LOGO} alt="Логотип фестиваля" className="w-14 h-14 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/560f14b4-3914-4d7b-b862-1b11a60a3abd.jpeg" alt="Осиянная Русь" className="w-14 h-7 object-contain drop-shadow-lg" />
+            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/a274299f-2b3b-4014-bc86-8529a2979d6d.PNG" alt="Защитники Отечества" className="w-14 h-7 object-contain drop-shadow-lg" />
           </div>
-          {/* Горизонтальный ряд: ИКЦ + Администрация + Великие Луки */}
-          <div className="flex items-center gap-2">
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/e0ad1eb8-c110-433e-a0de-02994b25629e.PNG" alt="Информационно-культурный центр Великолукский район" className="w-16 h-16 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/1034b2f6-28ff-4c53-84af-440f75e77f72.PNG" alt="Администрация Великолукского района" className="w-16 h-16 object-contain drop-shadow-lg" />
-            <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/8610c0f6-daa4-4b62-bafa-9fb36c314cc7.PNG" alt="Великие Луки" className="w-16 h-16 object-contain drop-shadow-lg" />
-          </div>
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/fe194b77-0539-4287-b0c9-ef8a4e3c9abf.jpg" alt="Союз писателей России" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/e0ad1eb8-c110-433e-a0de-02994b25629e.PNG" alt="Информационно-культурный центр Великолукский район" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/1034b2f6-28ff-4c53-84af-440f75e77f72.PNG" alt="Администрация Великолукского района" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/8610c0f6-daa4-4b62-bafa-9fb36c314cc7.PNG" alt="Великие Луки" className="w-14 h-14 object-contain drop-shadow-lg" />
+          <img src="https://cdn.poehali.dev/projects/cb5f2151-618e-4458-9342-f98631d4ff88/bucket/9715bd25-a800-4431-99cb-c84bdb9af298.jpg" alt="Псковский областной центр народного творчества" className="h-14 max-w-[130px] object-contain drop-shadow-lg" />
         </div>
 
         <div
@@ -748,7 +744,7 @@ const Index = () => {
       </section>
 
       {/* Contest Section */}
-      <section id="contest" className="relative z-10 py-24 px-6" style={{ scrollMarginTop: "260px" }}>
+      <section id="contest" className="relative z-10 py-24 px-6">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
