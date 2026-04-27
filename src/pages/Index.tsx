@@ -746,7 +746,7 @@ const Index = () => {
       </section>
 
       {/* Contest Section */}
-      <section id="contest" className="relative z-10 py-24 px-6 pt-48">
+      <section id="contest" className="relative z-10 py-24 px-6 pt-64">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
