@@ -417,6 +417,7 @@ const Index = () => {
                 { oid: "34207237", id: "456239416", hash: "b0e857a7c97998c8ce", title: "Фестиваль «А музы не молчат!»" },
                 { oid: "34207237", id: "456239417", hash: "7043a6afadb3b22dca", title: "Фестиваль «А музы не молчат!»" },
                 { oid: "-201865965", id: "456239869", hash: "23b8c01393cf6c9858", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-229745853", id: "456239100", hash: "", title: "Фестиваль «А музы не молчат!»" },
               ].map((video, i) => (
                 <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,90,30,0.25)" }}>
                   <div className="relative" style={{ paddingBottom: "56.25%", height: 0 }}>
