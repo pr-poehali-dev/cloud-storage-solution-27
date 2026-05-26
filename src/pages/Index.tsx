@@ -406,10 +406,18 @@ const Index = () => {
               Видео о фестивале
             </div>
             <h3 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: "#2a1000" }}>Видеохроника фестиваля</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {[
                 { oid: "-38523580", id: "456239117", title: "Фестиваль «А музы не молчат!»" },
                 { oid: "-41181609", id: "456249336", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-38523580", id: "456259170", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-229745853", id: "456239062", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239413", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239414", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239415", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239416", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239417", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-201865965", id: "456239869", title: "Фестиваль «А музы не молчат!»" },
               ].map((video, i) => (
                 <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,90,30,0.25)" }}>
                   <div className="relative" style={{ paddingBottom: "56.25%", height: 0 }}>
@@ -423,6 +431,24 @@ const Index = () => {
                     />
                   </div>
                 </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-4">
+              {[
+                { url: "https://disk.yandex.ru/i/XVgl1C_07HjMEg", label: "Видео на Яндекс.Диске №1" },
+                { url: "https://disk.yandex.ru/i/QAWK8x0DCVTD4g", label: "Видео на Яндекс.Диске №2" },
+              ].map((link, i) => (
+                <a
+                  key={i}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all hover:scale-105"
+                  style={{ background: "rgba(180,130,60,0.2)", border: "1px solid rgba(140,90,30,0.4)", color: "#3a1f00" }}
+                >
+                  <Icon name="Play" size={16} />
+                  {link.label}
+                </a>
               ))}
             </div>
           </div>
