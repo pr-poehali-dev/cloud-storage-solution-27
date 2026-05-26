@@ -400,6 +400,33 @@ const Index = () => {
             </div>
           </div>
 
+          {/* Videos */}
+          <div className="rounded-3xl p-10 md:p-14 mb-16" style={{ background: "rgba(180,130,60,0.12)", border: "1px solid rgba(140,90,30,0.2)", backdropFilter: "blur(12px)" }}>
+            <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ background: "rgba(180,130,60,0.2)", border: "1px solid rgba(140,90,30,0.4)", color: "#3a1f00" }}>
+              Видео о фестивале
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: "#2a1000" }}>Видеохроника фестиваля</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { oid: "-38523580", id: "456239117", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-41181609", id: "456249336", title: "Фестиваль «А музы не молчат!»" },
+              ].map((video, i) => (
+                <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,90,30,0.25)" }}>
+                  <div className="relative" style={{ paddingBottom: "56.25%", height: 0 }}>
+                    <iframe
+                      src={`https://vk.com/video_ext.php?oid=${video.oid}&id=${video.id}&hd=2`}
+                      className="absolute inset-0 w-full h-full"
+                      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      title={video.title}
+                      style={{ border: 0 }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Vasiliev Portrait + Bio */}
           <div className="rounded-3xl overflow-hidden mb-16" style={{ background: "rgba(180,130,60,0.12)", border: "1px solid rgba(140,90,30,0.2)", backdropFilter: "blur(12px)" }}>
             <div className="grid grid-cols-1 md:grid-cols-3">
