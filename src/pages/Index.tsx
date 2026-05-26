@@ -408,21 +408,21 @@ const Index = () => {
             <h3 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: "#2a1000" }}>Видеохроника фестиваля</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {[
-                { oid: "-38523580", id: "456239117", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "-41181609", id: "456249336", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "-38523580", id: "456259170", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "-229745853", id: "456239062", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "34207237", id: "456239413", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "34207237", id: "456239414", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "34207237", id: "456239415", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "34207237", id: "456239416", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "34207237", id: "456239417", title: "Фестиваль «А музы не молчат!»" },
-                { oid: "-201865965", id: "456239869", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-38523580", id: "456259170", hash: "6c0f17df355f678168", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-41181609", id: "456249336", hash: "e13da668bc42edd4ff", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-38523580", id: "456259170", hash: "6c0f17df355f678168", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-229745853", id: "456239062", hash: "5cff5cd1b3009c05f4", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239413", hash: "2e53ae0a9de026e113", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239414", hash: "8896f3f23da4f5e2e1", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239415", hash: "24a0d6678806256cd3", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239416", hash: "b0e857a7c97998c8ce", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "34207237", id: "456239417", hash: "7043a6afadb3b22dca", title: "Фестиваль «А музы не молчат!»" },
+                { oid: "-201865965", id: "456239869", hash: "23b8c01393cf6c9858", title: "Фестиваль «А музы не молчат!»" },
               ].map((video, i) => (
                 <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(140,90,30,0.25)" }}>
                   <div className="relative" style={{ paddingBottom: "56.25%", height: 0 }}>
                     <iframe
-                      src={`https://vk.com/video_ext.php?oid=${video.oid}&id=${video.id}&hd=2`}
+                      src={`https://vk.com/video_ext.php?oid=${video.oid}&id=${video.id}&hash=${video.hash}&hd=2`}
                       className="absolute inset-0 w-full h-full"
                       allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                       allowFullScreen
