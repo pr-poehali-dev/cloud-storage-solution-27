@@ -297,7 +297,7 @@ const Index = () => {
           >
             <Icon name="Calendar" size={24} style={{ color: "#d4a030" }} />
             <div className="text-left">
-              <div className="text-2xl font-bold" style={{ color: "#f5e8c0" }}>2–3 мая 2026</div>
+              <div className="text-2xl font-bold" style={{ color: "#f5e8c0" }}>1–3 мая 2027</div>
               <div className="text-xs mt-0.5" style={{ color: "rgba(212,160,48,0.8)" }}>Добавить в календарь</div>
             </div>
             <Icon name="ExternalLink" size={14} style={{ color: "rgba(212,160,48,0.6)", marginLeft: "auto" }} />
